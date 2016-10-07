@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" name="MyApp" packages="">
+	<Appenders>
+		<Console name="SystemOut" target="SYSTEM_OUT">
+			<PatternLayout pattern="[%p] %d{HH:mm:ss:SSS} %c{2} -> %m%n" />
+		</Console>
+		<RollingFile name="RollingFile" fileName="/log/logging.log"
+			filePattern="/log/archive/logging-%d{yyyy-MM-dd}-%i.log">
+			<PatternLayout>
+				<Pattern>[%p] %d{yyyy-MM-dd HH:mm:ss.SSS} %c - %m%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="10 MB" />
+			</Policies>
+			<DefaultRolloverStrategy>
+				<Delete basePath="/log/archive/" maxDepth="1">
+					<IfFileName glob="*.log" />
+					<IfLastModified age="10d" />
+				</Delete>
+			</DefaultRolloverStrategy>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Root level="info">
+			<AppenderRef ref="RollingFile" />
+			<AppenderRef ref="SystemOut" />
+		</Root>
+	</Loggers>
+</Configuration>
