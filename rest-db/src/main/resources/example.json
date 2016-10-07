@@ -1,0 +1,80 @@
+[
+  {
+    "databaseName": "db1",
+    "tables": [
+      {
+        "tableName": "table1",
+        "columns": [
+          {
+            "type": "String",
+            "columnName": "ID",
+            "defaultValue": "123",
+            "nullable": true,
+            "id": true
+          }
+        ],
+        "records": [
+          {
+            "fields": {
+              "Column{type=String, columnName='ID', isNullable=true, defaultValue=123}": {
+                "value": "123"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "databaseName": "db2",
+    "tables": [
+      {
+        "tableName": "table2",
+        "columns": [],
+        "records": [
+          {
+            "fields": {
+              "Column{type=Column{type=Long, columnName='NAME', isNullable=false, defaultValue=123}, columnName='null', isNullable=false, defaultValue=null}": {
+                "value": 123
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "databaseName": "db3",
+    "tables": [
+      {
+        "tableName": "table3",
+        "columns": [],
+        "records": [
+          {
+            "fields": {
+              "Column{type=Column{type=Long, columnName='NAME', isNullable=false, defaultValue=123}, columnName='null', isNullable=false, defaultValue=null}": {
+                "value": 123
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
+
+
+
+{
+  "fields": {
+    "Column{type=String, columnName='ID', isNullable=true, defaultValue=123}": {
+      "value": "123"
+    },
+    "Column{type=String, columnName='Name', isNullable=true, defaultValue=Ivan}": {
+      "value": "Valera"
+    },
+    "Column{type=String, columnName='Surname', isNullable=true, defaultValue=Ivan}": {
+      "value": "Ivanov"
+    }
+  }
+}
