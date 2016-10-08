@@ -26,9 +26,9 @@ public class IntersectionServiceImpl implements IntersectionService {
 	private TableService tableService;
 
 	@Override
-	public Table intersect(String databaseName, String tableName1, String tableName2) {
-		Table table1 = tableService.findTableByName(databaseName, tableName1);
-		Table table2 = tableService.findTableByName(databaseName, tableName2);
+	public Table intersect(String databaseName1, String databaseName2,  String tableName1, String tableName2) {
+		Table table1 = tableService.findTableByName(databaseName1, tableName1);
+		Table table2 = tableService.findTableByName(databaseName2, tableName2);
 
 		return intersectByColumn(table1, table2);
 	}

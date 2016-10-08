@@ -22,9 +22,11 @@ import java.util.Set;
 
 import ua.kiev.unicyb.tcct.domain.column.Column;
 import ua.kiev.unicyb.tcct.domain.column.ID;
+import ua.kiev.unicyb.tcct.domain.column.SupportedType;
 import ua.kiev.unicyb.tcct.domain.database.Database;
 import ua.kiev.unicyb.tcct.domain.field.Field;
 import ua.kiev.unicyb.tcct.domain.record.Record;
+import ua.kiev.unicyb.tcct.domain.table.Table;
 import ua.kiev.unicyb.tcct.exception.EntityType;
 import ua.kiev.unicyb.tcct.exception.ExistsException;
 import ua.kiev.unicyb.tcct.exception.NotFoundException;
@@ -101,6 +103,12 @@ public class DatabaseDaoImplInMem implements DatabaseDao {
 	}
 
 	@Override
+	public Iterable<Table> findAllTables(String databaseName) {
+		Database database = read(databaseName);
+		return database.getTables();
+	}
+
+	@Override
 	public void toFile(String fileName) {
 		try (
 				OutputStream file = new FileOutputStream(fileName);
@@ -137,7 +145,7 @@ public class DatabaseDaoImplInMem implements DatabaseDao {
 	private Column createColumn() {
 		Column column = new ID();
 		column.setNullable(true);
-		column.setType("String");
+		column.setType(SupportedType.STRING);
 		column.setColumnName("ID");
 		column.setDefaultValue("123");
 		return column;
@@ -146,7 +154,7 @@ public class DatabaseDaoImplInMem implements DatabaseDao {
 	private Column createColumn1() {
 		Column column = new Column();
 		column.setNullable(true);
-		column.setType("String");
+		column.setType(SupportedType.STRING);
 		column.setColumnName("Name");
 		column.setDefaultValue("Ivan");
 		return column;

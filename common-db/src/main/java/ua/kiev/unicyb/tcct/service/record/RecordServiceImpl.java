@@ -12,6 +12,7 @@ import java.util.Set;
 
 import javafx.util.Pair;
 import ua.kiev.unicyb.tcct.domain.column.Column;
+import ua.kiev.unicyb.tcct.domain.column.SupportedType;
 import ua.kiev.unicyb.tcct.domain.database.Database;
 import ua.kiev.unicyb.tcct.domain.field.Field;
 import ua.kiev.unicyb.tcct.domain.record.Record;
@@ -122,29 +123,38 @@ public class RecordServiceImpl implements RecordService {
 	}
 
 	private void checkForNotNullValue(Map.Entry<Column, Field> entry, Column column) {
-		String type = column.getType();
+		SupportedType type = column.getType();
 		switch (type) {
-		case "Double": {
-			if (!(entry.getValue().getValue() instanceof Double)) {
-				throw new TypeException(column.getColumnName(), column.getType());
+		case DOUBLE: {
+			try {
+				Double.valueOf(entry.getValue().getValue().toString());
+				break;
+			} catch (NumberFormatException e) {
+				throw new TypeException(column.getColumnName(), column.getType().name());
 			}
-			break;
 		}
-		case "Long": {
-			if (!(entry.getValue().getValue() instanceof Long)) {
-				throw new TypeException(column.getColumnName(), column.getType());
+		case LONG: {
+			try {
+				Long.valueOf(entry.getValue().getValue().toString());
+				break;
+			} catch (NumberFormatException e) {
+				throw new TypeException(column.getColumnName(), column.getType().name());
 			}
-			break;
 		}
-		case "Integer": {
-			if (!(entry.getValue().getValue() instanceof Integer)) {
-				throw new TypeException(column.getColumnName(), column.getType());
+		case INTEGER: {
+			try {
+				Integer.valueOf(entry.getValue().getValue().toString());
+				break;
+			} catch (NumberFormatException e) {
+				throw new TypeException(column.getColumnName(), column.getType().name());
 			}
-			break;
 		}
 		default: {
-			if (!(entry.getValue().getValue() instanceof String)) {
-				throw new TypeException(column.getColumnName(), column.getType());
+			try {
+				entry.getValue().getValue().toString();
+				break;
+			} catch (NumberFormatException e) {
+				throw new TypeException(column.getColumnName(), column.getType().name());
 			}
 		}
 		}

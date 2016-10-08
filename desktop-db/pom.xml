@@ -11,5 +11,26 @@
 
     <artifactId>desktop-db</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>ua.kiev.unicyb.tcct</groupId>
+            <artifactId>common-db</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>D:/Univ/5/tcct/db/common-db/target/common-db-1.0-SNAPSHOT.jar</systemPath>
+        </dependency>
+    </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.zenjava</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>2.0</version>
+                <configuration>
+                    <mainClass>ua.kiev.unicyb.tcct.ui.desktop.UIStarter</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

@@ -55,6 +55,11 @@ public class TableServiceImpl implements TableService {
 		databaseService.update(database);
 	}
 
+	@Override
+	public Iterable<Table> findAllTables(String databaseName) {
+		return databaseService.findAllTables(databaseName);
+	}
+
 	/*@Override
 	public void createTable(String name) {
 		Table table = new Table();

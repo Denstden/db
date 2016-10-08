@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<BorderPane fx:controller="ua.kiev.unicyb.tcct.ui.desktop.controller.main.MainDatabaseController"
+            xmlns:fx="http://javafx.com/fxml" styleClass="root">
+    <top>
+        <FlowPane>
+            <Button text="Create database" onAction="#handleCreateDatabaseAction"/>
+            <Button text="Create table" onAction="#handleCreateTableAction"/>
+            <Button text="Create column" onAction="#handleCreateColumnAction"/>
+            <Button text="Create record" onAction="#handleCreateRecordAction"/>
+        </FlowPane>
+    </top>
+    <center>
+        <FlowPane>
+            <Button text="View table content" onAction="#handleViewTableContentAction"/>
+            <Button text="Intersect tables" onAction="#handleTableIntersectionAction"/>
+            <Button text="Mock" onAction="#mock"/>
+        </FlowPane>
+    </center>
+</BorderPane>

@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.Set;
 
 import ua.kiev.unicyb.tcct.domain.column.Column;
+import ua.kiev.unicyb.tcct.domain.column.SupportedType;
 import ua.kiev.unicyb.tcct.domain.field.Field;
 import ua.kiev.unicyb.tcct.domain.record.Record;
 import ua.kiev.unicyb.tcct.domain.table.Table;
@@ -53,8 +54,8 @@ public class IntersectionServiceImplTest {
 		Table table1 = createTable1("Table1");
 		Table table2 = createTable2("Table2");
 		when(tableService.findTableByName("db1", "Table1")).thenReturn(table1);
-		when(tableService.findTableByName("db1", "Table2")).thenReturn(table2);
-		Table table = intersectionService.intersect("db1", "Table1", "Table2");
+		when(tableService.findTableByName("db2", "Table2")).thenReturn(table2);
+		Table table = intersectionService.intersect("db1", "db2", "Table1", "Table2");
 
 		assertEquals(table.getTableName(), "Table1_Table2_intersection");
 		verifyColumns(table.getColumns());
@@ -66,9 +67,9 @@ public class IntersectionServiceImplTest {
 		Table table1 = createTable1("Table1");
 		table1.getColumns().remove(createColumnId());
 		when(tableService.findTableByName("db1", "Table1")).thenReturn(table1);
-		when(tableService.findTableByName("db1", "Table2")).thenReturn(createTable2("Table2"));
+		when(tableService.findTableByName("db2", "Table2")).thenReturn(createTable2("Table2"));
 
-		intersectionService.intersect("db1", "Table1", "Table2");
+		intersectionService.intersect("db1", "db2", "Table1", "Table2");
 	}
 
 	private Table createTable1(String table1) {
@@ -106,19 +107,19 @@ public class IntersectionServiceImplTest {
 	}
 
 	private Column createColumnId() {
-		return columnFactory.createId("ID", "Long");
+		return columnFactory.createId("ID", SupportedType.LONG);
 	}
 
 	private Column createColumnName() {
-		return columnFactory.create("Name", "String");
+		return columnFactory.create("Name", SupportedType.STRING);
 	}
 
 	private Column createColumnSurname() {
-		return columnFactory.create("Surname", "String");
+		return columnFactory.create("Surname", SupportedType.STRING);
 	}
 
 	private Column createColumnAge() {
-		return columnFactory.create("Age", "Long");
+		return columnFactory.create("Age", SupportedType.DOUBLE);
 	}
 
 	private List<Record> createTable1Records() {

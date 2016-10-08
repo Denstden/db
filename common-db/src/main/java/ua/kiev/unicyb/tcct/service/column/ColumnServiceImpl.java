@@ -3,9 +3,11 @@ package ua.kiev.unicyb.tcct.service.column;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.Set;
 
 import ua.kiev.unicyb.tcct.domain.column.Column;
+import ua.kiev.unicyb.tcct.domain.column.SupportedType;
 import ua.kiev.unicyb.tcct.domain.database.Database;
 import ua.kiev.unicyb.tcct.domain.table.Table;
 import ua.kiev.unicyb.tcct.exception.EntityType;
@@ -59,6 +61,11 @@ public class ColumnServiceImpl implements ColumnService {
 			databaseService.update(database);
 		}
 		throw new NotFoundException(EntityType.COLUMN, column.getColumnName());
+	}
+
+	@Override
+	public Iterable<SupportedType> getAllSupportedTypes() {
+		return Arrays.asList(SupportedType.values());
 	}
 
 	private void addColumnToEmptyTable(String tableName, Column column, Set<Column> tableColumns) {

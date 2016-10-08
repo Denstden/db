@@ -11,4 +11,6 @@ public interface TableService {
 	void addTable(String databaseName, Table table);
 
 	void removeTable(String databaseName, String tableName);
+
+	Iterable<Table> findAllTables(String databaseName);
 }

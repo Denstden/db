@@ -1,6 +1,7 @@
 package ua.kiev.unicyb.tcct.dao.database;
 
 import ua.kiev.unicyb.tcct.domain.database.Database;
+import ua.kiev.unicyb.tcct.domain.table.Table;
 
 /**
  * @Author Denys Storozhenko.
@@ -19,6 +20,8 @@ public interface DatabaseDao {
 	boolean exists(Database database);
 
 	Iterable<Database> findAll();
+
+	Iterable<Table> findAllTables(String databaseName);
 
 	void toFile(String fileName);
 

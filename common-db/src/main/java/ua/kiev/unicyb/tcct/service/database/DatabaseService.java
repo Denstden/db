@@ -1,6 +1,7 @@
 package ua.kiev.unicyb.tcct.service.database;
 
 import ua.kiev.unicyb.tcct.domain.database.Database;
+import ua.kiev.unicyb.tcct.domain.table.Table;
 
 /**
  * @Author Denys Storozhenko.
@@ -21,4 +22,6 @@ public interface DatabaseService {
 	void toFile(String fileName);
 
 	void loadFromFile(String fileName);
+
+	Iterable<Table> findAllTables(String databaseName);
 }

@@ -1,27 +1,38 @@
 package ua.kiev.unicyb.tcct.ui.desktop;
 
+import java.util.Locale;
+
 import javafx.application.Application;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
+import ua.kiev.unicyb.tcct.ui.desktop.controller.main.MainDatabaseController;
+import ua.kiev.unicyb.tcct.ui.desktop.infrastructure.SpringFxmlLoader;
+
+import static ua.kiev.unicyb.tcct.ui.desktop.Constants.MAIN_HEIGHT;
+import static ua.kiev.unicyb.tcct.ui.desktop.Constants.MAIN_WIDTH;
+import static ua.kiev.unicyb.tcct.ui.desktop.Constants.getProperty;
 
 /**
  * @Author Denys Storozhenko.
  */
 public class UIStarter extends Application {
+	public static void main(String[] args) {
+		Locale.setDefault(new Locale("uk", "UA"));
+		launch(args);
+	}
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		BorderPane borderPane = new BorderPane();
-		borderPane.setMaxWidth(800);
-		Scene scene = new Scene(borderPane, 800, 600);
-		Button buttonFindAll = new Button("Find all");
+		initMainWindow(primaryStage);
+	}
 
-		primaryStage.setTitle("Database");
+	private void initMainWindow(Stage primaryStage) {
+		MainDatabaseController mainDatabaseController =
+				(MainDatabaseController) SpringFxmlLoader.load("/view/main.fxml");
+		Scene scene = new Scene((Parent) mainDatabaseController.getView(), MAIN_WIDTH, MAIN_HEIGHT);
+		primaryStage.setTitle(getProperty("project_name"));
 		primaryStage.setScene(scene);
 		primaryStage.show();
-
-		borderPane.setTop(new FlowPane(buttonFindAll));
 	}
 }

@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Component
 public class Column implements Serializable {
 	private static final Long serialVersionUID = 1263317914745382612L;
-	private String type;
+	private SupportedType type;
 	private String columnName;
 	private Boolean isNullable = false;
 	private Object defaultValue;
@@ -18,11 +18,11 @@ public class Column implements Serializable {
 	public Column() {
 	}
 
-	public Column(String type) {
+	public Column(SupportedType type) {
 		this.type = type;
 	}
 
-	public Column(String columnName, String type) {
+	public Column(String columnName, SupportedType type) {
 		this.columnName = columnName;
 		this.type = type;
 	}
@@ -51,11 +51,11 @@ public class Column implements Serializable {
 		isNullable = nullable;
 	}
 
-	public String getType() {
+	public SupportedType getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(SupportedType type) {
 		this.type = type;
 	}
 

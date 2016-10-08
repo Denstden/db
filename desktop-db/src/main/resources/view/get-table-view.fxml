@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Text?>
+<GridPane fx:controller="ua.kiev.unicyb.tcct.ui.desktop.controller.table.GetTableViewController"
+          xmlns:fx="http://javafx.com/fxml" styleClass="root" alignment="center" vgap="10" hgap="10">
+
+    <Text text="Database name" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <ChoiceBox fx:id="databaseNames" GridPane.columnIndex="1" GridPane.rowIndex="0">
+        <items>
+            <FXCollections fx:factory="observableArrayList"/>
+        </items>
+    </ChoiceBox>
+
+    <Text text="Table name" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <ChoiceBox fx:id="tableNames" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <items>
+            <FXCollections fx:factory="observableArrayList"/>
+        </items>
+    </ChoiceBox>
+
+    <Button visible="false" fx:id="getTableView" GridPane.columnIndex="1" GridPane.rowIndex="7" onAction="#getTableView" disable="true">
+        Get table view
+    </Button>
+
+    <Button visible="false" fx:id="createRecordView" GridPane.columnIndex="1" GridPane.rowIndex="7" onAction="#createRecord" disable="true">
+        Create record
+    </Button>
+</GridPane>

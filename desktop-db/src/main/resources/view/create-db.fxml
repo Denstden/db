@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Text?>
+<GridPane fx:controller="ua.kiev.unicyb.tcct.ui.desktop.controller.database.CreateDatabaseController"
+          xmlns:fx="http://javafx.com/fxml" styleClass="root" alignment="center" vgap="10" hgap="10">
+
+    <Text text="Database name" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <TextField fx:id="textField" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+
+    <Button GridPane.columnIndex="0" GridPane.rowIndex="2" onAction="#createDatabase">Create</Button>
+</GridPane>

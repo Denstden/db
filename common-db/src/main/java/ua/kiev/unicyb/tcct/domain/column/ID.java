@@ -12,7 +12,7 @@ public class ID extends Column {
 	public ID() {
 	}
 
-	public ID(String type) {
+	public ID(SupportedType type) {
 		super(type);
 		setNullable(false);
 		setDefaultValue(null);

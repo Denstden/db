@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import ua.kiev.unicyb.tcct.domain.column.Column;
+import ua.kiev.unicyb.tcct.domain.column.SupportedType;
 import ua.kiev.unicyb.tcct.domain.database.Database;
 import ua.kiev.unicyb.tcct.domain.field.Field;
 import ua.kiev.unicyb.tcct.domain.record.Record;
@@ -74,7 +75,7 @@ public class RecordServiceImplTest {
 		database.getTables().add(table);
 
 		Map<Column, Field> recordMap = new HashMap<>();
-		Column column = columnFactory.create("Name", "String");
+		Column column = columnFactory.create("Name", SupportedType.STRING);
 		Field field = new Field();
 		field.setValue("Ivan");
 		recordMap.put(column, field);
@@ -89,7 +90,7 @@ public class RecordServiceImplTest {
 		database.getTables().add(table);
 
 		Map<Column, Field> recordMap = new HashMap<>();
-		Column column = columnFactory.createId("ID", "String");
+		Column column = columnFactory.createId("ID", SupportedType.STRING);
 		Field field = new Field();
 		recordMap.put(column, field);
 		Record record = recordFactory.create(recordMap);
@@ -103,9 +104,9 @@ public class RecordServiceImplTest {
 		database.getTables().add(table);
 
 		Map<Column, Field> recordMap = new HashMap<>();
-		Column column = columnFactory.createId(	"Name", "String");
+		Column column = columnFactory.createId(	"Name", SupportedType.LONG);
 		Field field = new Field();
-		field.setValue(123L);
+		field.setValue("asd");
 		recordMap.put(column, field);
 		Record record = recordFactory.create(recordMap);
 
@@ -115,15 +116,15 @@ public class RecordServiceImplTest {
 	@Test(expected = NullableColumnException.class)
 	public void addRecordColumnNotNullableWithoutDefaultValueShouldRiseException() {
 		Table table = tableFactory.create("Table");
-		Column column = columnFactory.create("Name", false, null, "String");
-		Column id = columnFactory.createId("ID", "String");
+		Column column = columnFactory.create("Name", false, null, SupportedType.STRING);
+		Column id = columnFactory.createId("ID", SupportedType.STRING);
 		table.getColumns().add(id);
 		table.getColumns().add(column);
 		database.getTables().add(table);
 
 		Map<Column, Field> recordMap = new HashMap<>();
 
-		Column column1 = columnFactory.create("Surname", "Long");
+		Column column1 = columnFactory.create("Surname", SupportedType.LONG);
 		Field field = new Field();
 		field.setValue("123");
 		recordMap.put(id, field);
@@ -136,15 +137,15 @@ public class RecordServiceImplTest {
 	@Test(expected = UnknownColumnException.class)
 	public void addRecordWithUnknownColumnShouldRiseException() {
 		Table table = tableFactory.create("Table");
-		Column column = columnFactory.create("Name", true, null, "String");
-		Column id = columnFactory.createId("ID", "String");
+		Column column = columnFactory.create("Name", true, null, SupportedType.STRING);
+		Column id = columnFactory.createId("ID", SupportedType.STRING);
 		table.getColumns().add(id);
 		table.getColumns().add(column);
 		database.getTables().add(table);
 
 		Map<Column, Field> recordMap = new HashMap<>();
 
-		Column column1 = columnFactory.create("Surname", "String");
+		Column column1 = columnFactory.create("Surname", SupportedType.STRING);
 		Field field = new Field();
 		field.setValue("123");
 		recordMap.put(id, field);
@@ -157,7 +158,7 @@ public class RecordServiceImplTest {
 	@Test(expected = RecordExistsException.class)
 	public void addRecordTableHasRecordWithSuchIdShouldRiseException() {
 		Table table = tableFactory.create("Table");
-		Column id = columnFactory.createId("ID", "String");
+		Column id = columnFactory.createId("ID", SupportedType.STRING);
 		Map<Column, Field> recordMap1 = new HashMap<>();
 		Field fieldId = new Field("recordId");
 		recordMap1.put(id, fieldId);
@@ -178,11 +179,11 @@ public class RecordServiceImplTest {
 	@Test
 	public void shouldAddRecordAndFillAllValues() {
 		Table table = tableFactory.create("Table");
-		Column id = columnFactory.createId("ID", "String");
-		Column column1 = columnFactory.create("Surname", false, null, "String");
-		Column column2 = columnFactory.create("Age", true, null, "String");
-		Column column3 = columnFactory.create("Column3", true, 22.555, "Double");
-		Column column4 = columnFactory.create("Column4", false, 22.123, "Double");
+		Column id = columnFactory.createId("ID", SupportedType.STRING);
+		Column column1 = columnFactory.create("Surname", false, null, SupportedType.STRING);
+		Column column2 = columnFactory.create("Age", true, null, SupportedType.STRING);
+		Column column3 = columnFactory.create("Column3", true, 22.555, SupportedType.DOUBLE);
+		Column column4 = columnFactory.create("Column4", false, 22.123, SupportedType.DOUBLE);
 		table.getColumns().add(id);
 		table.getColumns().add(column1);
 		table.getColumns().add(column2);
@@ -191,7 +192,7 @@ public class RecordServiceImplTest {
 		database.getTables().add(table);
 
 		Map<Column, Field> recordMap = new HashMap<>();
-		Column column5 = columnFactory.create("Surname", "String");
+		Column column5 = columnFactory.create("Surname", SupportedType.STRING);
 		Field field = new Field();
 		field.setValue("Ivanov");
 		recordMap.put(id, field);

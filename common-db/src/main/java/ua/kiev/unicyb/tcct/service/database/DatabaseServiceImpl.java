@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import ua.kiev.unicyb.tcct.dao.database.DatabaseDao;
 import ua.kiev.unicyb.tcct.domain.database.Database;
+import ua.kiev.unicyb.tcct.domain.table.Table;
 
 /**
  * @Author Denys Storozhenko.
@@ -37,6 +38,11 @@ public class DatabaseServiceImpl implements DatabaseService {
 	@Override
 	public void loadFromFile(String fileName) {
 		databaseDao.fromFile(fileName);
+	}
+
+	@Override
+	public Iterable<Table> findAllTables(String databaseName) {
+		return databaseDao.findAllTables(databaseName);
 	}
 
 	@Override

@@ -11,6 +11,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.util.Collections;
 
 import ua.kiev.unicyb.tcct.domain.column.Column;
+import ua.kiev.unicyb.tcct.domain.column.SupportedType;
 import ua.kiev.unicyb.tcct.domain.database.Database;
 import ua.kiev.unicyb.tcct.domain.table.Table;
 import ua.kiev.unicyb.tcct.exception.ExistsException;
@@ -52,7 +53,7 @@ public class ColumnServiceImplTest {
 	public void addColumnShouldRiseExceptionIfFirstNotId() {
 		database.setTables(Collections.singletonList(tableFactory.create("Table")));
 
-		columnService.addColumn("DB", "Table", columnFactory.create("Column", "String"));
+		columnService.addColumn("DB", "Table", columnFactory.create("Column", SupportedType.STRING));
 	}
 
 	@Test
@@ -60,7 +61,7 @@ public class ColumnServiceImplTest {
 		Table table = tableFactory.create("Table");
 		database.setTables(Collections.singletonList(table));
 
-		Column column = columnFactory.createId("ID", "String");
+		Column column = columnFactory.createId("ID", SupportedType.STRING);
 		columnService.addColumn("DB", "Table", column);
 
 		assertEquals(column, database.getTables().get(0).getColumns().iterator().next());
@@ -69,31 +70,31 @@ public class ColumnServiceImplTest {
 	@Test(expected = ExistsException.class)
 	public void addColumnShouldRiseExceptionIfExists() {
 		Table table = tableFactory.create("Table");
-		table.getColumns().add(columnFactory.createId("ID", "String"));
-		table.getColumns().add(columnFactory.create("Name", "String"));
+		table.getColumns().add(columnFactory.createId("ID", SupportedType.STRING));
+		table.getColumns().add(columnFactory.create("Name", SupportedType.STRING));
 		database.setTables(Collections.singletonList(table));
 
-		columnService.addColumn("DB", "Table", columnFactory.create("Name", "String"));
+		columnService.addColumn("DB", "Table", columnFactory.create("Name", SupportedType.STRING));
 	}
 
 	@Test(expected = IdColumnExistsException.class)
 	public void addColumnIdShouldRiseExceptionIfIdExists() {
 		Table table = tableFactory.create("Table");
-		table.getColumns().add(columnFactory.createId("ID", "String"));
-		table.getColumns().add(columnFactory.create("Name", "String"));
+		table.getColumns().add(columnFactory.createId("ID", SupportedType.STRING));
+		table.getColumns().add(columnFactory.create("Name", SupportedType.STRING));
 		database.setTables(Collections.singletonList(table));
 
-		columnService.addColumn("DB", "Table", columnFactory.createId("ID1", "String"));
+		columnService.addColumn("DB", "Table", columnFactory.createId("ID1", SupportedType.STRING));
 	}
 
 	@Test
 	public void shouldAddColumnIfNotExists() {
 		Table table = tableFactory.create("Table");
-		table.getColumns().add(columnFactory.createId("ID", "String"));
-		table.getColumns().add(columnFactory.create("Name", "String"));
+		table.getColumns().add(columnFactory.createId("ID", SupportedType.STRING));
+		table.getColumns().add(columnFactory.create("Name", SupportedType.STRING));
 		database.setTables(Collections.singletonList(table));
 
-		columnService.addColumn("DB", "Table", columnFactory.create("Surname", "String"));
+		columnService.addColumn("DB", "Table", columnFactory.create("Surname", SupportedType.STRING));
 
 		assertEquals(3, database.getTables().get(0).getColumns().size());
 	}
