@@ -38,8 +38,11 @@ public class ColumnServiceImplTest {
 	private ColumnServiceImpl columnService;
 
 	private DatabaseFactory databaseFactory = new DatabaseFactory();
+
 	private TableFactory tableFactory = new TableFactory();
+
 	private ColumnFactory columnFactory = new ColumnFactory();
+
 	private Database database;
 
 	@Before

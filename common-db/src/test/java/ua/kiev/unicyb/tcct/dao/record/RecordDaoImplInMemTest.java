@@ -54,7 +54,7 @@ public class RecordDaoImplInMemTest {
 		Record record = createRecord();
 		recordDao.getRecords().add(record);
 
-		recordDao.read((ID)(columnFactory.createId("ID1", SupportedType.LONG)), 1L);
+		recordDao.read((ID) (columnFactory.createId("ID1", SupportedType.LONG)), 1L);
 	}
 
 	@Test(expected = NotFoundException.class)
@@ -62,7 +62,7 @@ public class RecordDaoImplInMemTest {
 		Record record = createRecord();
 		recordDao.getRecords().add(record);
 
-		recordDao.read((ID)(columnFactory.createId("ID", SupportedType.LONG)), 2L);
+		recordDao.read((ID) (columnFactory.createId("ID", SupportedType.LONG)), 2L);
 	}
 
 	@Test
@@ -70,7 +70,7 @@ public class RecordDaoImplInMemTest {
 		Record record = createRecord();
 		recordDao.getRecords().add(record);
 
-		Record record1 = recordDao.read((ID)(columnFactory.createId("ID", SupportedType.LONG)), 1L);
+		Record record1 = recordDao.read((ID) (columnFactory.createId("ID", SupportedType.LONG)), 1L);
 
 		assertEquals(record, record1);
 	}

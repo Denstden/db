@@ -14,7 +14,9 @@ import ua.kiev.unicyb.tcct.domain.table.Table;
 @Component
 public class Database implements Serializable, Comparable<Database> {
 	private static final long serialVersionUID = 12631934182612L;
+
 	private String databaseName;
+
 	private List<Table> tables = new ArrayList<>();
 
 	public Database() {

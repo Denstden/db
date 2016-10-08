@@ -12,5 +12,6 @@ import ua.kiev.unicyb.tcct.domain.record.Record;
  */
 public interface RecordDao {
 	void create(Map<Column, Field> record);
+
 	Record read(ID id, Object value);
 }

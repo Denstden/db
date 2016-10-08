@@ -15,6 +15,7 @@ import ua.kiev.unicyb.tcct.domain.field.Field;
 @Component
 public class Record implements Serializable {
 	private static final Long serialVersionUID = -691274196371259512L;
+
 	private Map<Column, Field> fields = new HashMap<>();
 
 	public Record() {

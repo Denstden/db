@@ -10,6 +10,7 @@ import java.io.Serializable;
 @Component
 public class Field implements Serializable {
 	private static final Long serialVersionUID = -681723869123631613L;
+
 	private Object value;
 
 	public Field() {

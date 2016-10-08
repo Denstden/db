@@ -17,8 +17,11 @@ import ua.kiev.unicyb.tcct.domain.record.Record;
 @Component
 public class Table implements Serializable {
 	private static final Long serialVersionUID = 1263315813434182612L;
+
 	private String tableName;
+
 	private Set<Column> columns = new HashSet<>();
+
 	private List<Record> records = new ArrayList<>();
 
 	public Table() {

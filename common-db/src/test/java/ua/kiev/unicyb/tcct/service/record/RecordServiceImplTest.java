@@ -47,9 +47,13 @@ public class RecordServiceImplTest {
 	private RecordServiceImpl recordService;
 
 	private DatabaseFactory databaseFactory = new DatabaseFactory();
+
 	private TableFactory tableFactory = new TableFactory();
+
 	private RecordFactory recordFactory = new RecordFactory();
+
 	private ColumnFactory columnFactory = new ColumnFactory();
+
 	private Database database;
 
 	@Before
@@ -104,7 +108,7 @@ public class RecordServiceImplTest {
 		database.getTables().add(table);
 
 		Map<Column, Field> recordMap = new HashMap<>();
-		Column column = columnFactory.createId(	"Name", SupportedType.LONG);
+		Column column = columnFactory.createId("Name", SupportedType.LONG);
 		Field field = new Field();
 		field.setValue("asd");
 		recordMap.put(column, field);
@@ -176,6 +180,7 @@ public class RecordServiceImplTest {
 
 		recordService.addRecord("DB", "Table", record1);
 	}
+
 	@Test
 	public void shouldAddRecordAndFillAllValues() {
 		Table table = tableFactory.create("Table");
@@ -201,7 +206,7 @@ public class RecordServiceImplTest {
 
 		recordService.addRecord("DB", "Table", record);
 
-//		assertEquals(5, table.getRecords().get(0).getFields().size());
+		//		assertEquals(5, table.getRecords().get(0).getFields().size());
 		Map<Column, Field> res = table.getRecords().get(0).getFields();
 		assertTrue(res.containsKey(id));
 		assertEquals("Ivanov", res.get(id).getValue());

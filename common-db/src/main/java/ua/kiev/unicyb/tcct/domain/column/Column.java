@@ -10,9 +10,13 @@ import java.io.Serializable;
 @Component
 public class Column implements Serializable {
 	private static final Long serialVersionUID = 1263317914745382612L;
+
 	private SupportedType type;
+
 	private String columnName;
+
 	private Boolean isNullable = false;
+
 	private Object defaultValue;
 
 	public Column() {

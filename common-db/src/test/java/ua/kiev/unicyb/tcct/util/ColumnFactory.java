@@ -7,7 +7,7 @@ import ua.kiev.unicyb.tcct.domain.column.SupportedType;
 /**
  * @Author Denys Storozhenko.
  */
-public class ColumnFactory{
+public class ColumnFactory {
 
 	public Column create(String name, SupportedType type) {
 		return new Column(name, type);
