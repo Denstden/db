@@ -9,4 +9,6 @@ public interface RecordService {
 	void addRecord(String databaseName, String tableName, Record record);
 
 	void updateRecord(String databaseName, String tableName, Record record);
+
+	void uploadImage(String databaseName, String tableName, String columnName, String recordId, byte[] bytes);
 }

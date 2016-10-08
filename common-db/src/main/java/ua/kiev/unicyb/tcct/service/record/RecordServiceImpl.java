@@ -18,7 +18,9 @@ import ua.kiev.unicyb.tcct.domain.field.Field;
 import ua.kiev.unicyb.tcct.domain.record.Record;
 import ua.kiev.unicyb.tcct.domain.table.Table;
 import ua.kiev.unicyb.tcct.exception.EmptyRecordException;
+import ua.kiev.unicyb.tcct.exception.EntityType;
 import ua.kiev.unicyb.tcct.exception.IdColumnNotFoundException;
+import ua.kiev.unicyb.tcct.exception.NotFoundException;
 import ua.kiev.unicyb.tcct.exception.NullableColumnException;
 import ua.kiev.unicyb.tcct.exception.NullableException;
 import ua.kiev.unicyb.tcct.exception.RecordExistsException;
@@ -174,6 +176,50 @@ public class RecordServiceImpl implements RecordService {
 			table.getRecords().add(record1);
 		});
 		databaseService.update(database);
+	}
+
+	@Override
+	public void uploadImage(String databaseName, String tableName, String columnName, String recordId, byte[] bytes) {
+		Database database = databaseService.findByName(databaseName);
+		for (Table table : database.getTables()) {
+			if (table.getTableName().equals(tableName)) {
+				Column column = findColumnByName(table.getColumns(), columnName);
+				Record record = findRecordByRecordIdValue(table.getRecords(), recordId);
+				table.getRecords().remove(record);
+				record.getFields().put(column, new Field(bytes));
+				table.getRecords().add(record);
+			}
+		}
+		databaseService.update(database);
+	}
+
+	private Column findColumnByName(Set<Column> columns, String columnName) {
+		for (Column column : columns) {
+			if (column.getColumnName().equals(columnName)) {
+				return column;
+			}
+		}
+		throw new NotFoundException(EntityType.COLUMN, columnName);
+	}
+
+	private Record findRecordByRecordIdValue(List<Record> records, String recordId) {
+		for (Record record : records) {
+			Pair<Column, Object> id = findRecordIdColumn(record.getFields());
+			Object value = castTo(recordId, id.getKey().getType());
+			if (id.getValue().equals(value)) {
+				return record;
+			}
+		}
+		throw new RecordNotFoundException(recordId);
+	}
+
+	private Object castTo(String recordId, SupportedType type) {
+		switch (type) {
+		case DOUBLE: return Double.valueOf(recordId);
+		case INTEGER: return Integer.valueOf(recordId);
+		case LONG: return Long.valueOf(recordId);
+		default: return recordId;
+		}
 	}
 
 	private boolean equalsIdColumns(Record record, Record tableRecord) {

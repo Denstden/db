@@ -31,10 +31,10 @@ public class ColumnDtoConverter extends AbstractConverter<ColumnDto, Column> {
 			column = new Column(SupportedType.valueOf(dto.getType().toUpperCase()));
 		}
 		column.setColumnName(dto.getColumnName());
+		column.setNullable(dto.getNullable());
 		if (dto.getDefaultValue() != null) {
 			setDefaultValue(column, dto);
 		}
-		column.setNullable(dto.getNullable());
 		return column;
 	}
 
@@ -45,7 +45,10 @@ public class ColumnDtoConverter extends AbstractConverter<ColumnDto, Column> {
 			column.setDefaultValue(Integer.valueOf(dto.getDefaultValue()));
 		} else if (dto.getType().equalsIgnoreCase("Double")) {
 			column.setDefaultValue(Double.valueOf(dto.getDefaultValue()));
-		} else {
+		} else if (dto.getType().equalsIgnoreCase("Picture")) {
+			column.setDefaultValue(null);
+			column.setNullable(true);
+		}else {
 			column.setDefaultValue(dto.getDefaultValue());
 		}
 	}

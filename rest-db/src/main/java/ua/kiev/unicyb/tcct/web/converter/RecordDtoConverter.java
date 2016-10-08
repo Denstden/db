@@ -3,6 +3,7 @@ package ua.kiev.unicyb.tcct.web.converter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -32,7 +33,12 @@ public class RecordDtoConverter extends AbstractConverter<RecordDto, Record> {
 		Map<String, String> fields = new HashMap<>();
 		if (entity.getFields() != null) {
 			for (Map.Entry<Column, Field> entry : entity.getFields().entrySet()) {
-				fields.put(entry.getKey().getColumnName(), entry.getValue().getValue().toString());
+				if (entry.getKey().getType() != SupportedType.PICTURE) {
+					fields.put(entry.getKey().getColumnName(), entry.getValue().getValue().toString());
+				} else {
+					byte[] bytes = (byte[]) entry.getValue().getValue();
+					fields.put(entry.getKey().getColumnName(), Arrays.toString(bytes));
+				}
 			}
 			recordDto.setRecord(fields);
 		}
