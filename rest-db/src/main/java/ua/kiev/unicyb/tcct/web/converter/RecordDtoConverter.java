@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 import ua.kiev.unicyb.tcct.domain.column.Column;
+import ua.kiev.unicyb.tcct.domain.column.SupportedType;
 import ua.kiev.unicyb.tcct.domain.database.Database;
 import ua.kiev.unicyb.tcct.domain.field.Field;
 import ua.kiev.unicyb.tcct.domain.record.Record;
@@ -69,13 +70,13 @@ public class RecordDtoConverter extends AbstractConverter<RecordDto, Record> {
 		throw new NotFoundException(EntityType.TABLE, tableName);
 	}
 
-	private Field convertField(String type, String value) {
+	private Field convertField(SupportedType type, String value) {
 		Field field = new Field();
-		if (type.equalsIgnoreCase("Double")) {
+		if (type == SupportedType.DOUBLE) {
 			field.setValue(Double.valueOf(value));
-		} else if (type.equalsIgnoreCase("Long")) {
+		} else if (type == SupportedType.LONG) {
 			field.setValue(Long.valueOf(value));
-		} else if (type.equalsIgnoreCase("Integer")) {
+		} else if (type == SupportedType.INTEGER) {
 			field.setValue(Integer.valueOf(value));
 		} else {
 			field.setValue(String.valueOf(value));

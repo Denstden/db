@@ -2,6 +2,7 @@ package ua.kiev.unicyb.tcct.web.converter;
 
 import ua.kiev.unicyb.tcct.domain.column.Column;
 import ua.kiev.unicyb.tcct.domain.column.ID;
+import ua.kiev.unicyb.tcct.domain.column.SupportedType;
 import ua.kiev.unicyb.tcct.web.dto.ColumnDto;
 
 /**
@@ -13,7 +14,8 @@ public class ColumnDtoConverter extends AbstractConverter<ColumnDto, Column> {
 		ColumnDto columnDto = new ColumnDto();
 		columnDto.setNullable(entity.isNullable());
 		columnDto.setColumnName(entity.getColumnName());
-		columnDto.setType(entity.getType());
+		String type = entity.getType().name();
+		columnDto.setType(Character.toUpperCase(type.charAt(0)) + type.substring(1).toLowerCase());
 		if (entity.getDefaultValue() != null) {
 			columnDto.setDefaultValue(entity.getDefaultValue().toString());
 		}
@@ -24,9 +26,9 @@ public class ColumnDtoConverter extends AbstractConverter<ColumnDto, Column> {
 	public Column toEntity(ColumnDto dto) {
 		Column column;
 		if (dto.getId()) {
-			column = new ID(dto.getType());
+			column = new ID(SupportedType.valueOf(dto.getType().toUpperCase()));
 		} else {
-			column = new Column(dto.getType());
+			column = new Column(SupportedType.valueOf(dto.getType().toUpperCase()));
 		}
 		column.setColumnName(dto.getColumnName());
 		if (dto.getDefaultValue() != null) {
