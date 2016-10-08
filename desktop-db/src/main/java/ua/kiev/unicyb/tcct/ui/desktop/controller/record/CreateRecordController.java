@@ -23,7 +23,7 @@ import ua.kiev.unicyb.tcct.service.table.TableService;
 import ua.kiev.unicyb.tcct.ui.desktop.controller.AbstractController;
 import ua.kiev.unicyb.tcct.ui.desktop.exception.ExceptionHandler;
 
-import static ua.kiev.unicyb.tcct.ui.desktop.Constants.getProperty;
+import static ua.kiev.unicyb.tcct.ui.desktop.infrastructure.Constants.getProperty;
 
 /**
  * @Author Denys Storozhenko.

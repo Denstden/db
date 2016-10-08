@@ -34,8 +34,7 @@ public class UtilController extends AbstractController {
 	public void loadTableNames(String databaseName, ChoiceBox<String> tableNames) {
 		try {
 			tableNames.getItems().clear();
-			tableService.findAllTables(databaseName)
-					.forEach(table -> tableNames.getItems().add(table.getTableName()));
+			tableService.findAllTables(databaseName).forEach(table -> tableNames.getItems().add(table.getTableName()));
 		} catch (Exception e) {
 			ExceptionHandler.handleException(e);
 		}

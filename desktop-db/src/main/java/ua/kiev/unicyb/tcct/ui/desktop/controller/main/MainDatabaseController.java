@@ -14,11 +14,11 @@ import ua.kiev.unicyb.tcct.ui.desktop.controller.table.TableIntersectionControll
 import ua.kiev.unicyb.tcct.ui.desktop.controller.util.MockUtil;
 import ua.kiev.unicyb.tcct.ui.desktop.infrastructure.SpringFxmlLoader;
 
-import static ua.kiev.unicyb.tcct.ui.desktop.Constants.LOW_HEIGHT;
-import static ua.kiev.unicyb.tcct.ui.desktop.Constants.LOW_WIDTH;
-import static ua.kiev.unicyb.tcct.ui.desktop.Constants.MIDDLE_HEIGHT;
-import static ua.kiev.unicyb.tcct.ui.desktop.Constants.MIDDLE_WIDTH;
-import static ua.kiev.unicyb.tcct.ui.desktop.Constants.getProperty;
+import static ua.kiev.unicyb.tcct.ui.desktop.infrastructure.Constants.LOW_HEIGHT;
+import static ua.kiev.unicyb.tcct.ui.desktop.infrastructure.Constants.LOW_WIDTH;
+import static ua.kiev.unicyb.tcct.ui.desktop.infrastructure.Constants.MIDDLE_HEIGHT;
+import static ua.kiev.unicyb.tcct.ui.desktop.infrastructure.Constants.MIDDLE_WIDTH;
+import static ua.kiev.unicyb.tcct.ui.desktop.infrastructure.Constants.getProperty;
 
 /**
  * @Author Denys Storozhenko.

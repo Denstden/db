@@ -21,11 +21,11 @@ import ua.kiev.unicyb.tcct.ui.desktop.controller.util.UtilController;
 import ua.kiev.unicyb.tcct.ui.desktop.exception.ExceptionHandler;
 import ua.kiev.unicyb.tcct.ui.desktop.infrastructure.SpringFxmlLoader;
 
-import static ua.kiev.unicyb.tcct.ui.desktop.Constants.LOW_HEIGHT;
-import static ua.kiev.unicyb.tcct.ui.desktop.Constants.LOW_WIDTH;
-import static ua.kiev.unicyb.tcct.ui.desktop.Constants.MAIN_HEIGHT;
-import static ua.kiev.unicyb.tcct.ui.desktop.Constants.MAIN_WIDTH;
-import static ua.kiev.unicyb.tcct.ui.desktop.Constants.getProperty;
+import static ua.kiev.unicyb.tcct.ui.desktop.infrastructure.Constants.LOW_HEIGHT;
+import static ua.kiev.unicyb.tcct.ui.desktop.infrastructure.Constants.LOW_WIDTH;
+import static ua.kiev.unicyb.tcct.ui.desktop.infrastructure.Constants.MAIN_HEIGHT;
+import static ua.kiev.unicyb.tcct.ui.desktop.infrastructure.Constants.MAIN_WIDTH;
+import static ua.kiev.unicyb.tcct.ui.desktop.infrastructure.Constants.getProperty;
 
 /**
  * @Author Denys Storozhenko.

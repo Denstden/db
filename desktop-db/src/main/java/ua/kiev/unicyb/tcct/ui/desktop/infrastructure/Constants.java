@@ -1,4 +1,4 @@
-package ua.kiev.unicyb.tcct.ui.desktop;
+package ua.kiev.unicyb.tcct.ui.desktop.infrastructure;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Locale;
@@ -26,7 +26,7 @@ public final class Constants {
 
 	public static String getProperty(String name) {
 		try {
-			return new String (RESOURCE_BUNDLE.getString(name).getBytes("ISO-8859-1"), "UTF-8");
+			return new String(RESOURCE_BUNDLE.getString(name).getBytes("ISO-8859-1"), "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			ExceptionHandler.handleException(e);
 		}
