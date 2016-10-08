@@ -8,25 +8,23 @@
 <GridPane fx:controller="ua.kiev.unicyb.tcct.ui.desktop.controller.table.GetTableViewController"
           xmlns:fx="http://javafx.com/fxml" styleClass="root" alignment="center" vgap="10" hgap="10">
 
-    <Text text="Database name" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <Text text="%database_name" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
     <ChoiceBox fx:id="databaseNames" GridPane.columnIndex="1" GridPane.rowIndex="0">
         <items>
             <FXCollections fx:factory="observableArrayList"/>
         </items>
     </ChoiceBox>
 
-    <Text text="Table name" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <Text text="%table_name" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
     <ChoiceBox fx:id="tableNames" GridPane.columnIndex="1" GridPane.rowIndex="1">
         <items>
             <FXCollections fx:factory="observableArrayList"/>
         </items>
     </ChoiceBox>
 
-    <Button visible="false" fx:id="getTableView" GridPane.columnIndex="1" GridPane.rowIndex="7" onAction="#getTableView" disable="true">
-        Get table view
-    </Button>
+    <Button text="%get_table_view" visible="false" fx:id="getTableView" GridPane.columnIndex="1" GridPane.rowIndex="7"
+            onAction="#getTableView" disable="true"/>
 
-    <Button visible="false" fx:id="createRecordView" GridPane.columnIndex="1" GridPane.rowIndex="7" onAction="#createRecord" disable="true">
-        Create record
-    </Button>
+    <Button text="%create_record" visible="false" fx:id="createRecordView" GridPane.columnIndex="1" GridPane.rowIndex="7"
+            onAction="#createRecord" disable="true"/>
 </GridPane>

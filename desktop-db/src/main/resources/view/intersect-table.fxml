@@ -8,33 +8,33 @@
 <GridPane fx:controller="ua.kiev.unicyb.tcct.ui.desktop.controller.table.TableIntersectionController"
           xmlns:fx="http://javafx.com/fxml" styleClass="root" alignment="center" vgap="10" hgap="10">
 
-    <Text text="Database name" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <Text text="%database_name" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
     <ChoiceBox fx:id="databaseNames1" GridPane.columnIndex="1" GridPane.rowIndex="0">
         <items>
             <FXCollections fx:factory="observableArrayList"/>
         </items>
     </ChoiceBox>
 
-    <Text text="Table name" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <Text text="%table_name" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
     <ChoiceBox fx:id="tableNames1" GridPane.columnIndex="1" GridPane.rowIndex="1">
         <items>
             <FXCollections fx:factory="observableArrayList"/>
         </items>
     </ChoiceBox>
 
-    <Text text="Database name" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <Text text="%database_name" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
     <ChoiceBox fx:id="databaseNames2" GridPane.columnIndex="1" GridPane.rowIndex="2">
         <items>
             <FXCollections fx:factory="observableArrayList"/>
         </items>
     </ChoiceBox>
 
-    <Text text="Table name" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <Text text="%table_name" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
     <ChoiceBox fx:id="tableNames2" GridPane.columnIndex="1" GridPane.rowIndex="3">
         <items>
             <FXCollections fx:factory="observableArrayList"/>
         </items>
     </ChoiceBox>
 
-    <Button GridPane.columnIndex="1" GridPane.rowIndex="4" onAction="#intersectTables">Intersect</Button>
+    <Button text="%intersect_tables" GridPane.columnIndex="1" GridPane.rowIndex="4" onAction="#intersectTables"/>
 </GridPane>

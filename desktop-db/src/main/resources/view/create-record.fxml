@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.GridPane?>
 <GridPane fx:id="pane" fx:controller="ua.kiev.unicyb.tcct.ui.desktop.controller.record.CreateRecordController"
           xmlns:fx="http://javafx.com/fxml" styleClass="root" alignment="center" vgap="10" hgap="10">
-    <!--<ListView fx:id="columns">
-        <items>
-            <FXCollections fx:factory="observableArrayList"/>
-        </items>
-    </ListView>-->
 </GridPane>

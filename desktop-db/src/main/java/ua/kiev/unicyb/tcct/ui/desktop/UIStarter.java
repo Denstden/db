@@ -18,7 +18,7 @@ import static ua.kiev.unicyb.tcct.ui.desktop.infrastructure.Constants.getPropert
  */
 public class UIStarter extends Application {
 	public static void main(String[] args) {
-		Locale.setDefault(new Locale("uk", "UA"));
+		Locale.setDefault(new Locale("ru", "RU"));
 		launch(args);
 	}
 

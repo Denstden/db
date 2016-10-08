@@ -16,19 +16,17 @@ import ua.kiev.unicyb.tcct.domain.column.Column;
 import ua.kiev.unicyb.tcct.domain.column.ID;
 import ua.kiev.unicyb.tcct.domain.column.SupportedType;
 import ua.kiev.unicyb.tcct.service.column.ColumnService;
-import ua.kiev.unicyb.tcct.service.table.TableService;
 import ua.kiev.unicyb.tcct.ui.desktop.controller.AbstractController;
 import ua.kiev.unicyb.tcct.ui.desktop.controller.util.UtilController;
 import ua.kiev.unicyb.tcct.ui.desktop.exception.ExceptionHandler;
+
+import static ua.kiev.unicyb.tcct.ui.desktop.infrastructure.Constants.getProperty;
 
 /**
  * @Author Denys Storozhenko.
  */
 @Controller
 public class CreateColumnController extends AbstractController implements Initializable {
-	@Autowired
-	private TableService tableService;
-
 	@Autowired
 	private ColumnService columnService;
 
@@ -114,7 +112,7 @@ public class CreateColumnController extends AbstractController implements Initia
 
 	private void validate(Column column) {
 		if (StringUtils.isEmpty(column.getColumnName()) || column.getType() == null) {
-			throw new RuntimeException("Name and type should be not empty.");
+			throw new RuntimeException(getProperty("name_type_empty"));
 		}
 	}
 }

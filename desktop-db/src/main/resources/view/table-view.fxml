@@ -3,5 +3,4 @@
 <?import javafx.scene.control.TableView?>
 <TableView fx:id="tableView" fx:controller="ua.kiev.unicyb.tcct.ui.desktop.controller.table.TableViewController"
            xmlns:fx="http://javafx.com/fxml" styleClass="root">
-
 </TableView>

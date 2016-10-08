@@ -7,8 +7,8 @@
 <GridPane fx:controller="ua.kiev.unicyb.tcct.ui.desktop.controller.database.CreateDatabaseController"
           xmlns:fx="http://javafx.com/fxml" styleClass="root" alignment="center" vgap="10" hgap="10">
 
-    <Text text="Database name" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <Text text="%database_name" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
     <TextField fx:id="textField" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
 
-    <Button GridPane.columnIndex="0" GridPane.rowIndex="2" onAction="#createDatabase">Create</Button>
+    <Button text="%create_database" GridPane.columnIndex="0" GridPane.rowIndex="2" onAction="#createDatabase"/>
 </GridPane>

@@ -5,6 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ResourceBundle;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -22,6 +23,7 @@ public class SpringFxmlLoader {
 			fxmlStream = SpringFxmlLoader.class.getResourceAsStream(url);
 			FXMLLoader loader = new FXMLLoader();
 			loader.setControllerFactory(applicationContext::getBean);
+			loader.setResources(ResourceBundle.getBundle("app", new UTF8Control()));
 
 			Node view = loader.load(fxmlStream);
 			Controller controller = loader.getController();

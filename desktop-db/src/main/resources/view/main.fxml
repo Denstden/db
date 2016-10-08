@@ -7,16 +7,16 @@
             xmlns:fx="http://javafx.com/fxml" styleClass="root">
     <top>
         <FlowPane>
-            <Button text="Create database" onAction="#handleCreateDatabaseAction"/>
-            <Button text="Create table" onAction="#handleCreateTableAction"/>
-            <Button text="Create column" onAction="#handleCreateColumnAction"/>
-            <Button text="Create record" onAction="#handleCreateRecordAction"/>
+            <Button text="%create_database" onAction="#handleCreateDatabaseAction"/>
+            <Button text="%create_table" onAction="#handleCreateTableAction"/>
+            <Button text="%create_column" onAction="#handleCreateColumnAction"/>
+            <Button text="%create_record" onAction="#handleCreateRecordAction"/>
         </FlowPane>
     </top>
     <center>
         <FlowPane>
-            <Button text="View table content" onAction="#handleViewTableContentAction"/>
-            <Button text="Intersect tables" onAction="#handleTableIntersectionAction"/>
+            <Button text="%get_table_view" onAction="#handleViewTableContentAction"/>
+            <Button text="%intersect_tables" onAction="#handleTableIntersectionAction"/>
             <Button text="Mock" onAction="#mock"/>
         </FlowPane>
     </center>

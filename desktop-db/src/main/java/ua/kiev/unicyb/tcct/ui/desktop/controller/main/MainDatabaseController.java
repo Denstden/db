@@ -87,7 +87,7 @@ public class MainDatabaseController extends AbstractController {
 				(TableIntersectionController) SpringFxmlLoader.load("/view/intersect-table.fxml");
 		Stage stage = new Stage();
 		Scene scene = new Scene((Parent) tableIntersectionController.getView(), LOW_WIDTH, LOW_HEIGHT);
-		stage.setTitle(getProperty("create_record"));
+		stage.setTitle(getProperty("intersect_tables"));
 		stage.setScene(scene);
 		stage.show();
 	}

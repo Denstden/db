@@ -9,15 +9,15 @@
 <GridPane fx:controller="ua.kiev.unicyb.tcct.ui.desktop.controller.table.CreateTableController"
           xmlns:fx="http://javafx.com/fxml" styleClass="root" alignment="center" vgap="10" hgap="10">
 
-    <Text text="Database name" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <Text text="%database_name" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
     <ChoiceBox fx:id="databaseNames" GridPane.columnIndex="1" GridPane.rowIndex="0">
         <items>
             <FXCollections fx:factory="observableArrayList"/>
         </items>
     </ChoiceBox>
 
-    <Text text="Table name" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <Text text="%table_name" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
     <TextField fx:id="tableName" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
-    <Button GridPane.columnIndex="1" GridPane.rowIndex="2" onAction="#createTable">Create</Button>
+    <Button text="%create_table" GridPane.columnIndex="1" GridPane.rowIndex="2" onAction="#createTable"/>
 </GridPane>
