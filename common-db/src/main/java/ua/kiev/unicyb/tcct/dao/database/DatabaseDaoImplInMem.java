@@ -97,8 +97,8 @@ public class DatabaseDaoImplInMem implements DatabaseDao {
 
 	@Override
 	public Iterable<Database> findAll() {
-		//databases.get(0).getTables().get(0).setRecords(createRecords());
-		//databases.get(0).getTables().get(0).setColumns(createColumns());
+		databases.get(0).getTables().get(0).setRecords(createRecords());
+		databases.get(0).getTables().get(0).setColumns(createColumns());
 		return databases;
 	}
 

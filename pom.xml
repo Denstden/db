@@ -13,6 +13,7 @@
         <module>common-db</module>
         <module>rest-db</module>
         <module>desktop-db</module>
+        <module>jax-ws-db</module>
     </modules>
 
     <properties>
