@@ -14,6 +14,7 @@ import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,12 +50,24 @@ public class DatabaseDaoImplInMem implements DatabaseDao {
 
 	@Override
 	public Database read(String databaseName) {
+		mockDb();
 		for (Database database : databases) {
 			if (database.getDatabaseName() != null && database.getDatabaseName().equals(databaseName)) {
 				return database;
 			}
 		}
 		throw new NotFoundException(EntityType.DATABASE, databaseName);
+	}
+
+	private void mockDb() {
+		Database database = new Database();
+		database.setDatabaseName("DB1");
+		Table table = new Table();
+		table.setTableName("TABLE1");
+		database.setTables(Collections.singletonList(table));
+		databases.add(database);
+		databases.get(0).getTables().get(0).setRecords(createRecords());
+		databases.get(0).getTables().get(0).setColumns(createColumns());
 	}
 
 	@Override

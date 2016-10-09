@@ -1,5 +1,6 @@
 package ua.kiev.unicyb.tcct.dao.database;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * @Author Denys Storozhenko.
  */
+@Ignore
 public class DatabaseDaoImplInMemTest {
 	private DatabaseDaoImplInMem databaseDao = new DatabaseDaoImplInMem();
 

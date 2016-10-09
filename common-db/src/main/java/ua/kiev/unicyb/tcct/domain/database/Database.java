@@ -6,17 +6,32 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
+
 import ua.kiev.unicyb.tcct.domain.table.Table;
 
 /**
  * @Author Denys Storozhenko.
  */
 @Component
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "", propOrder = {
+		"databaseName"/*,
+		"tables"*/
+})
+@XmlRootElement(name = "databaseDtoResponse")
 public class Database implements Serializable, Comparable<Database> {
 	private static final long serialVersionUID = 12631934182612L;
 
+	@XmlElement(required = true)
 	private String databaseName;
-
+//	@XmlElement(required = true)
+	@XmlTransient
 	private List<Table> tables = new ArrayList<>();
 
 	public Database() {
