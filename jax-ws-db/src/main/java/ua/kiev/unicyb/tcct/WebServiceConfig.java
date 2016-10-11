@@ -1,4 +1,4 @@
-package hello;
+package ua.kiev.unicyb.tcct;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
@@ -25,33 +25,19 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 		return new ServletRegistrationBean(servlet, "/ws/*");
 	}
 
-	@Bean(name = "countries")
-	public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema countriesSchema) {
-		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-		wsdl11Definition.setPortTypeName("CountriesPort");
-		wsdl11Definition.setLocationUri("/ws");
-		wsdl11Definition.setTargetNamespace("http://spring.io/guides/gs-producing-web-service");
-		wsdl11Definition.setSchema(countriesSchema);
-		return wsdl11Definition;
-	}
-
 	@Bean
-	public XsdSchema countriesSchema() {
-		return new SimpleXsdSchema(new ClassPathResource("countries.xsd"));
-	}
-
-	@Bean(name = "databases")
-	public DefaultWsdl11Definition defaultWsdl11Definition1(XsdSchema databaseSchema) {
+	public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema databaseSchema) {
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-		wsdl11Definition.setPortTypeName("DatabasePort");
+		wsdl11Definition.setPortTypeName("DatabasesPort");
 		wsdl11Definition.setLocationUri("/ws");
-		//wsdl11Definition.setTargetNamespace("http://spring.io/guides/gs-producing-web-service");
+		wsdl11Definition.setTargetNamespace("ua.kiev.unicyb.tcct");
 		wsdl11Definition.setSchema(databaseSchema);
 		return wsdl11Definition;
 	}
 
 	@Bean
 	public XsdSchema databaseSchema() {
-		return new SimpleXsdSchema(new ClassPathResource("databases.xsd"));
+		ClassPathResource resource = new ClassPathResource("databases.xsd");
+		return new SimpleXsdSchema(resource);
 	}
 }

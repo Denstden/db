@@ -1,0 +1,9 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:gs="ua.kiev.unicyb.tcct">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <gs:databaseDtoRequest>
+            <gs:databaseName>DB1</gs:databaseName>
+        </gs:databaseDtoRequest>
+    </soapenv:Body>
+</soapenv:Envelope>

@@ -4,14 +4,36 @@
     <xs:element name="databaseDtoRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="name" type="xs:string"/>
+                <xs:element name="databaseName" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="tableDtoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="databaseName" type="xs:string"/>
+                <xs:element name="tableName" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
     <xs:complexType name="database">
         <xs:sequence>
-            <xs:element name="name" type="xs:string"/>
+            <xs:element name="databaseName" type="xs:string"/>
+            <xs:element name="listTables"  minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="table" type="tns:table" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="table">
+        <xs:sequence>
+            <xs:element name="tableName" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 </xs:schema>

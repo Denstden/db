@@ -1,0 +1,3 @@
+curl --header "content-type: text/xml" -d @db-get-by-name.xml http://localhost:8080/ws
+
+curl --header "content-type: text/xml" -d @table-get-by-name.xml http://localhost:8080/ws

@@ -1,4 +1,4 @@
-package hello.dto;
+package ua.kiev.unicyb.tcct.xml;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -11,12 +11,15 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-		"databaseName"
+		"databaseName",
+		"tableName"
 })
-@XmlRootElement(name = "databaseDtoRequest")
-public class DatabaseDtoRequest {
+@XmlRootElement(name = "tableDtoRequest")
+public class TableDtoRequest {
 	@XmlElement(required = true)
 	private String databaseName;
+	@XmlElement(required = true)
+	private String tableName;
 
 	public String getDatabaseName() {
 		return databaseName;
@@ -24,5 +27,13 @@ public class DatabaseDtoRequest {
 
 	public void setDatabaseName(String databaseName) {
 		this.databaseName = databaseName;
+	}
+
+	public String getTableName() {
+		return tableName;
+	}
+
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
 	}
 }

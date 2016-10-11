@@ -1,7 +1,5 @@
 package ua.kiev.unicyb.tcct.service.record;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +32,7 @@ import ua.kiev.unicyb.tcct.service.database.DatabaseService;
  */
 @Service
 public class RecordServiceImpl implements RecordService {
-	private static final Logger logger = LogManager.getLogger(RecordServiceImpl.class);
+//	private static final Logger logger = LogManager.getLogger(RecordServiceImpl.class);
 
 	@Autowired
 	private DatabaseService databaseService;
@@ -165,11 +163,11 @@ public class RecordServiceImpl implements RecordService {
 	@Override
 	public void updateRecord(String databaseName, String tableName, Record record) {
 		Pair<Column, Object> column = findRecordIdColumn(record.getFields());
-		logger.info("Update record : ID column name '" + column.getKey().getColumnName() +
-				"', ID column value '" + column.getValue() + "'");
+		/*logger.info("Update record : ID column name '" + column.getKey().getColumnName() +
+				"', ID column value '" + column.getValue() + "'");*/
 		Database database = databaseService.findByName(databaseName);
 		database.getTables().stream().filter(table -> table.getTableName().equals(tableName)).forEach(table -> {
-			logger.info("Update record for table '" + tableName + "'");
+//			logger.info("Update record for table '" + tableName + "'");
 			Record record1 = findRecordByIdColumn(column, table.getRecords());
 			table.getRecords().remove(record1);
 			record1.setFields(record.getFields());

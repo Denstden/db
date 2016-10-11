@@ -2,8 +2,9 @@
                   xmlns:gs="ua.kiev.unicyb.tcct">
     <soapenv:Header/>
     <soapenv:Body>
-        <gs:databaseDtoRequest>
-            <gs:name>DB1</gs:name>
-        </gs:databaseDtoRequest>
+        <gs:tableDtoRequest>
+            <gs:databaseName>DB1</gs:databaseName>
+            <gs:tableName>TABLE1</gs:tableName>
+        </gs:tableDtoRequest>
     </soapenv:Body>
 </soapenv:Envelope>

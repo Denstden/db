@@ -7,6 +7,7 @@ import java.util.Map;
 
 import ua.kiev.unicyb.tcct.domain.column.Column;
 import ua.kiev.unicyb.tcct.domain.column.ID;
+import ua.kiev.unicyb.tcct.domain.column.SupportedType;
 import ua.kiev.unicyb.tcct.domain.field.Field;
 import ua.kiev.unicyb.tcct.domain.record.Record;
 import ua.kiev.unicyb.tcct.exception.IdColumnNotFoundException;
@@ -31,7 +32,7 @@ public class RecordDaoImplInMemTest {
 	@Test(expected = IdColumnNotFoundException.class)
 	public void createWithoutIdColumnShouldRiseIdNotFoundException() {
 		Map<Column, Field> map = new HashMap<>();
-		map.put(columnFactory.create("Name", "String"), new Field("Ivan"));
+		map.put(columnFactory.create("Name", SupportedType.STRING), new Field("Ivan"));
 
 		recordDao.create(map);
 	}
@@ -39,8 +40,8 @@ public class RecordDaoImplInMemTest {
 	@Test
 	public void shouldCreate() {
 		Map<Column, Field> map = new HashMap<>();
-		map.put(columnFactory.create("Name", "String"), new Field("Ivan"));
-		map.put(columnFactory.createId("ID", "Long"), new Field(1L));
+		map.put(columnFactory.create("Name", SupportedType.STRING), new Field("Ivan"));
+		map.put(columnFactory.createId("ID", SupportedType.LONG), new Field(1L));
 		assertEquals(0, recordDao.getRecords().size());
 
 		recordDao.create(map);
@@ -53,7 +54,7 @@ public class RecordDaoImplInMemTest {
 		Record record = createRecord();
 		recordDao.getRecords().add(record);
 
-		recordDao.read((ID)(columnFactory.createId("ID1", "Long")), 1L);
+		recordDao.read((ID)(columnFactory.createId("ID1", SupportedType.LONG)), 1L);
 	}
 
 	@Test(expected = NotFoundException.class)
@@ -61,7 +62,7 @@ public class RecordDaoImplInMemTest {
 		Record record = createRecord();
 		recordDao.getRecords().add(record);
 
-		recordDao.read((ID)(columnFactory.createId("ID", "Long")), 2L);
+		recordDao.read((ID)(columnFactory.createId("ID", SupportedType.LONG)), 2L);
 	}
 
 	@Test
@@ -69,7 +70,7 @@ public class RecordDaoImplInMemTest {
 		Record record = createRecord();
 		recordDao.getRecords().add(record);
 
-		Record record1 = recordDao.read((ID)(columnFactory.createId("ID", "Long")), 1L);
+		Record record1 = recordDao.read((ID)(columnFactory.createId("ID", SupportedType.LONG)), 1L);
 
 		assertEquals(record, record1);
 	}
@@ -77,8 +78,8 @@ public class RecordDaoImplInMemTest {
 	private Record createRecord() {
 		Record record = new Record();
 		Map<Column, Field> map = new HashMap<>();
-		map.put(columnFactory.createId("ID", "Long"), new Field(1L));
-		map.put(columnFactory.create("Name", "String"), new Field("Ivan"));
+		map.put(columnFactory.createId("ID", SupportedType.LONG), new Field(1L));
+		map.put(columnFactory.create("Name", SupportedType.STRING), new Field("Ivan"));
 		record.setFields(map);
 		return record;
 	}

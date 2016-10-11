@@ -1,7 +1,5 @@
 package ua.kiev.unicyb.tcct.service.database;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +12,7 @@ import ua.kiev.unicyb.tcct.domain.table.Table;
  */
 @Service
 public class DatabaseServiceImpl implements DatabaseService {
-	private static final Logger logger = LogManager.getLogger(DatabaseServiceImpl.class);
+//	private static final Logger logger = LogManager.getLogger(DatabaseServiceImpl.class);
 
 	@Autowired
 	private DatabaseDao databaseDao;

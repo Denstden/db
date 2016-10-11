@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package hello;
+package ua.kiev.unicyb.tcct;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +27,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.ClassUtils;
 import org.springframework.ws.client.core.WebServiceTemplate;
 
-import io.spring.guides.gs_producing_web_service.GetCountryRequest;
+import ua.kiev.unicyb.tcct.domain.database.Database;
+import ua.kiev.unicyb.tcct.domain.table.Table;
+import ua.kiev.unicyb.tcct.xml.DatabaseDtoRequest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -42,15 +44,16 @@ public class ApplicationIntegrationTests {
 
     @Before
     public void init() throws Exception {
-        marshaller.setPackagesToScan(ClassUtils.getPackageName(GetCountryRequest.class));
+        marshaller.setPackagesToScan(ClassUtils.getPackageName(DatabaseDtoRequest.class),
+                ClassUtils.getPackageName(Database.class), ClassUtils.getPackageName(Table.class));
         marshaller.afterPropertiesSet();
     }
 
     @Test
     public void testSendAndReceive() {
         WebServiceTemplate ws = new WebServiceTemplate(marshaller);
-        GetCountryRequest request = new GetCountryRequest();
-        request.setName("Spain");
+        DatabaseDtoRequest request = new DatabaseDtoRequest();
+        request.setDatabaseName("DB1");
 
         assertThat(ws.marshalSendAndReceive("http://localhost:"
                 + port + "/ws", request)).isNotNull();

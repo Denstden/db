@@ -8,6 +8,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
+
 import ua.kiev.unicyb.tcct.domain.column.Column;
 import ua.kiev.unicyb.tcct.domain.record.Record;
 
@@ -15,13 +22,19 @@ import ua.kiev.unicyb.tcct.domain.record.Record;
  * @Author Denys Storozhenko.
  */
 @Component
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "", propOrder = {
+		"tableName"
+})
+@XmlRootElement(name = "table")
 public class Table implements Serializable {
 	private static final Long serialVersionUID = 1263315813434182612L;
 
+	@XmlElement(required = true)
 	private String tableName;
-
+	@XmlTransient
 	private Set<Column> columns = new HashSet<>();
-
+	@XmlTransient
 	private List<Record> records = new ArrayList<>();
 
 	public Table() {
