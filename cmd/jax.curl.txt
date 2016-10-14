@@ -1,3 +1,8 @@
+D:
+cd Univ/5/tcct/db/jax-ws-db/src/main/resources/example
+
 curl --header "content-type: text/xml" -d @db-get-by-name.xml http://localhost:8080/ws
 
 curl --header "content-type: text/xml" -d @table-get-by-name.xml http://localhost:8080/ws
+
+curl --header "content-type: text/xml" -d @column-get-by-name.xml http://localhost:8080/ws

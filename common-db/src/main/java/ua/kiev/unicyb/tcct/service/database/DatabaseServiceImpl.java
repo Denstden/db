@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ua.kiev.unicyb.tcct.dao.database.DatabaseDao;
+import ua.kiev.unicyb.tcct.domain.column.Column;
 import ua.kiev.unicyb.tcct.domain.database.Database;
 import ua.kiev.unicyb.tcct.domain.table.Table;
 
@@ -41,6 +42,11 @@ public class DatabaseServiceImpl implements DatabaseService {
 	@Override
 	public Iterable<Table> findAllTables(String databaseName) {
 		return databaseDao.findAllTables(databaseName);
+	}
+
+	@Override
+	public Column getColumnByName(String dbName, String tableName, String columnName) {
+		return databaseDao.getColumnByName(dbName, tableName, columnName);
 	}
 
 	@Override

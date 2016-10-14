@@ -40,6 +40,11 @@ public class ColumnServiceImpl implements ColumnService {
 	}
 
 	@Override
+	public Column getColumnByName(String dbName, String tableName, String columnName) {
+		return databaseService.getColumnByName(dbName, tableName, columnName);
+	}
+
+	@Override
 	public void updateColumn(String dbName, String tableName, Column column) {
 		Database database = databaseService.findByName(dbName);
 		boolean wasFinded = false;

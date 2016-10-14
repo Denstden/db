@@ -1,5 +1,6 @@
 package ua.kiev.unicyb.tcct.service.database;
 
+import ua.kiev.unicyb.tcct.domain.column.Column;
 import ua.kiev.unicyb.tcct.domain.database.Database;
 import ua.kiev.unicyb.tcct.domain.table.Table;
 
@@ -24,4 +25,6 @@ public interface DatabaseService {
 	void loadFromFile(String fileName);
 
 	Iterable<Table> findAllTables(String databaseName);
+
+	Column getColumnByName(String dbName, String tableName, String columnName);
 }

@@ -11,6 +11,7 @@ import java.util.Set;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
@@ -24,7 +25,8 @@ import ua.kiev.unicyb.tcct.domain.record.Record;
 @Component
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-		"tableName"
+		"tableName",
+		"columns"
 })
 @XmlRootElement(name = "table")
 public class Table implements Serializable {
@@ -32,7 +34,8 @@ public class Table implements Serializable {
 
 	@XmlElement(required = true)
 	private String tableName;
-	@XmlTransient
+	@XmlElementWrapper(name = "columns", namespace = "ua.kiev.unicyb.tcct", required = true)
+	@XmlElement(name = "column", namespace = "ua.kiev.unicyb.tcct")
 	private Set<Column> columns = new HashSet<>();
 	@XmlTransient
 	private List<Record> records = new ArrayList<>();

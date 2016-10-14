@@ -1,5 +1,6 @@
 package ua.kiev.unicyb.tcct.dao.database;
 
+import ua.kiev.unicyb.tcct.domain.column.Column;
 import ua.kiev.unicyb.tcct.domain.database.Database;
 import ua.kiev.unicyb.tcct.domain.table.Table;
 
@@ -26,4 +27,6 @@ public interface DatabaseDao {
 	void toFile(String fileName);
 
 	void fromFile(String fileName);
+
+	Column getColumnByName(String dbName, String tableName, String columnName);
 }

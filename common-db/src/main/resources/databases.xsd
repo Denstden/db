@@ -18,6 +18,16 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="getColumnByNameDtoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="databaseName" type="xs:string"/>
+                <xs:element name="tableName" type="xs:string"/>
+                <xs:element name="columnName" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
     <xs:complexType name="database">
         <xs:sequence>
             <xs:element name="databaseName" type="xs:string"/>
@@ -25,6 +35,13 @@
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element name="table" type="tns:table" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element name="columns" minOccurs="0" maxOccurs="1">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element type="tns:column" name="column" minOccurs="0" maxOccurs="unbounded"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -34,6 +51,24 @@
     <xs:complexType name="table">
         <xs:sequence>
             <xs:element name="tableName" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="column">
+        <xs:sequence>
+            <xs:element name="columnName" type="xs:string"/>
+            <xs:element name="type" type="xs:string"/>
+            <xs:element name="isNullable" type="xs:boolean"/>
+            <xs:element name="defaultValue" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="id">
+        <xs:sequence>
+            <xs:element name="columnName" type="xs:string"/>
+            <xs:element name="type" type="xs:string"/>
+            <xs:element name="isNullable" type="xs:boolean"/>
+            <xs:element name="defaultValue" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 </xs:schema>

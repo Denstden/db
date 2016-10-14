@@ -30,9 +30,9 @@ public class Database implements Serializable, Comparable<Database> {
 
 	@XmlElement(required = true)
 	private String databaseName;
+
 	@XmlElementWrapper(name = "listTables", namespace = "ua.kiev.unicyb.tcct", required = true)
 	@XmlElement(name = "table", namespace = "ua.kiev.unicyb.tcct")
-//	@XmlTransient
 	private List<Table> tables = new ArrayList<>();
 
 	public Database() {

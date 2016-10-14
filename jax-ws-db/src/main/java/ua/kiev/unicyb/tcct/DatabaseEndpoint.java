@@ -6,10 +6,13 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import ua.kiev.unicyb.tcct.domain.column.Column;
 import ua.kiev.unicyb.tcct.domain.database.Database;
 import ua.kiev.unicyb.tcct.domain.table.Table;
+import ua.kiev.unicyb.tcct.service.column.ColumnService;
 import ua.kiev.unicyb.tcct.service.database.DatabaseService;
 import ua.kiev.unicyb.tcct.service.table.TableService;
+import ua.kiev.unicyb.tcct.xml.GetColumnByNameDtoRequest;
 import ua.kiev.unicyb.tcct.xml.DatabaseDtoRequest;
 import ua.kiev.unicyb.tcct.xml.TableDtoRequest;
 
@@ -26,6 +29,9 @@ public class DatabaseEndpoint {
 	@Autowired
 	private TableService tableService;
 
+	@Autowired
+	private ColumnService columnService;
+
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "databaseDtoRequest")
 	@ResponsePayload
 	public Database getDatabase(@RequestPayload DatabaseDtoRequest request) {
@@ -36,5 +42,11 @@ public class DatabaseEndpoint {
 	@ResponsePayload
 	public Table getTable(@RequestPayload TableDtoRequest request) {
 		return tableService.findTableByName(request.getDatabaseName(), request.getTableName());
+	}
+
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getColumnByNameDtoRequest")
+	@ResponsePayload
+	public Column getColumn(@RequestPayload GetColumnByNameDtoRequest request) {
+		return columnService.getColumnByName(request.getDatabaseName(), request.getTableName(), request.getColumnName());
 	}
 }

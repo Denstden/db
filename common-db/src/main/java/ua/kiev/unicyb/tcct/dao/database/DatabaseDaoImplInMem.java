@@ -148,6 +148,19 @@ public class DatabaseDaoImplInMem implements DatabaseDao {
 		}
 	}
 
+	@Override
+	public Column getColumnByName(String dbName, String tableName, String columnName) {
+		Iterable<Table> tables = findAllTables(dbName);
+		for (Table table : tables) {
+			for (Column column : table.getColumns()) {
+				if (column.getColumnName().equals(columnName)) {
+					return column;
+				}
+			}
+		}
+		return null;
+	}
+
 	private Set<Column> createColumns() {
 		Set<Column> columns = new HashSet<>();
 		columns.add(createColumn());

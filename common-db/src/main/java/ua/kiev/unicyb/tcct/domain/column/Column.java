@@ -4,19 +4,34 @@ import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
 /**
  * @Author Denys Storozhenko.
  */
 @Component
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "", propOrder = {
+		"type",
+		"columnName",
+		"isNullable",
+		"defaultValue"
+})
+@XmlRootElement(name = "column")
 public class Column implements Serializable {
 	private static final Long serialVersionUID = 1263317914745382612L;
 
+	@XmlElement(required = true)
 	private SupportedType type;
-
+	@XmlElement(required = true)
 	private String columnName;
-
+	@XmlElement(required = true)
 	private Boolean isNullable = false;
-
+	@XmlElement(required = true)
 	private Object defaultValue;
 
 	public Column() {
