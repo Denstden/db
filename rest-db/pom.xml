@@ -111,7 +111,7 @@
             <artifactId>common-db</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>system</scope>
-            <systemPath>D:/Univ/5/tcct/db/common-db/target/common-db-1.0-SNAPSHOT.jar</systemPath>
+            <systemPath>${project.basedir}/../common-db/target/common-db-1.0-SNAPSHOT.jar</systemPath>
         </dependency>
     </dependencies>
 

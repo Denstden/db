@@ -1,11 +1,16 @@
 package ua.kiev.unicyb.tcct.dao.database;
 
-import org.junit.Ignore;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import ua.kiev.unicyb.tcct.dao.MockDao;
 import ua.kiev.unicyb.tcct.domain.database.Database;
 import ua.kiev.unicyb.tcct.domain.table.Table;
 import ua.kiev.unicyb.tcct.exception.ExistsException;
@@ -16,17 +21,27 @@ import ua.kiev.unicyb.tcct.util.TableFactory;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.when;
 
 /**
  * @Author Denys Storozhenko.
  */
-@Ignore
+@RunWith(MockitoJUnitRunner.class)
 public class DatabaseDaoImplInMemTest {
+	@Mock
+	private MockDao mockDao;
+
+	@InjectMocks
 	private DatabaseDaoImplInMem databaseDao = new DatabaseDaoImplInMem();
 
 	private DatabaseFactory databaseFactory = new DatabaseFactory();
 
 	private TableFactory tableFactory = new TableFactory();
+
+	@Before
+	public void setUp() {
+		when(mockDao.mockDb()).thenReturn(new ArrayList<>());
+	}
 
 	@Test
 	public void shouldCreate() {

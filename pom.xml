@@ -14,6 +14,9 @@
         <module>rest-db</module>
         <module>desktop-db</module>
         <module>jax-ws-db</module>
+        <module>jax-ws-client</module>
+        <module>rmi-client</module>
+        <module>rmi-server</module>
     </modules>
 
     <properties>

@@ -13,7 +13,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 import ua.kiev.unicyb.tcct.domain.column.Column;
@@ -24,20 +23,20 @@ import ua.kiev.unicyb.tcct.domain.record.Record;
  */
 @Component
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-		"tableName",
-		"columns"
-})
+@XmlType(name = "", propOrder = {"tableName", "columns", "records"})
 @XmlRootElement(name = "table")
 public class Table implements Serializable {
 	private static final Long serialVersionUID = 1263315813434182612L;
 
 	@XmlElement(required = true)
 	private String tableName;
+
 	@XmlElementWrapper(name = "columns", namespace = "ua.kiev.unicyb.tcct", required = true)
 	@XmlElement(name = "column", namespace = "ua.kiev.unicyb.tcct")
 	private Set<Column> columns = new HashSet<>();
-	@XmlTransient
+
+	@XmlElementWrapper(name = "records", namespace = "ua.kiev.unicyb.tcct", required = true)
+	@XmlElement(name = "record", namespace = "ua.kiev.unicyb.tcct")
 	private List<Record> records = new ArrayList<>();
 
 	public Table() {

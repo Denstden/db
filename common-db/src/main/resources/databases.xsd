@@ -1,6 +1,90 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="ua.kiev.unicyb.tcct"
            targetNamespace="ua.kiev.unicyb.tcct" elementFormDefault="qualified">
 
+    <xs:element name="databases">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="tns:database" name="database" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="database">
+        <xs:sequence>
+            <xs:element name="databaseName" type="xs:string"/>
+            <xs:element name="listTables" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="table" type="tns:table" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="table">
+        <xs:sequence>
+            <xs:element name="tableName" type="xs:string"/>
+            <xs:element name="columns" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element type="tns:column" name="column" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="records" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element type="tns:record" name="record" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="record">
+        <xs:sequence>
+            <xs:element name="fields" type="tns:fields"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="fields">
+        <xs:sequence>
+            <xs:element name="entry" type="tns:entry"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="entry">
+        <xs:sequence>
+            <xs:element name="key" type="tns:column"/>
+            <xs:element name="value" type="tns:field"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="column">
+        <xs:sequence>
+            <xs:element name="columnName" type="xs:string"/>
+            <xs:element name="type" type="xs:string"/>
+            <xs:element name="isNullable" type="xs:boolean"/>
+            <xs:element name="defaultValue" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="field">
+        <xs:sequence>
+            <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="id">
+        <xs:sequence>
+            <xs:element name="columnName" type="xs:string"/>
+            <xs:element name="type" type="xs:string"/>
+            <xs:element name="isNullable" type="xs:boolean"/>
+            <xs:element name="defaultValue" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
     <xs:element name="databaseDtoRequest">
         <xs:complexType>
             <xs:sequence>
@@ -28,47 +112,14 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:complexType name="database">
-        <xs:sequence>
-            <xs:element name="databaseName" type="xs:string"/>
-            <xs:element name="listTables"  minOccurs="0" maxOccurs="1">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="table" type="tns:table" minOccurs="0" maxOccurs="unbounded"/>
-                        <xs:element name="columns" minOccurs="0" maxOccurs="1">
-                            <xs:complexType>
-                                <xs:sequence>
-                                    <xs:element type="tns:column" name="column" minOccurs="0" maxOccurs="unbounded"/>
-                                </xs:sequence>
-                            </xs:complexType>
-                        </xs:element>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="table">
-        <xs:sequence>
-            <xs:element name="tableName" type="xs:string"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="column">
-        <xs:sequence>
-            <xs:element name="columnName" type="xs:string"/>
-            <xs:element name="type" type="xs:string"/>
-            <xs:element name="isNullable" type="xs:boolean"/>
-            <xs:element name="defaultValue" type="xs:string"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="id">
-        <xs:sequence>
-            <xs:element name="columnName" type="xs:string"/>
-            <xs:element name="type" type="xs:string"/>
-            <xs:element name="isNullable" type="xs:boolean"/>
-            <xs:element name="defaultValue" type="xs:string"/>
-        </xs:sequence>
-    </xs:complexType>
+    <xs:element name="getTableIntersectionDtoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="db1Name" type="xs:string"/>
+                <xs:element name="table1Name" type="xs:string"/>
+                <xs:element name="db2Name" type="xs:string"/>
+                <xs:element name="table2Name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>

@@ -1,6 +1,7 @@
 package ua.kiev.unicyb.tcct.service.table;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ import ua.kiev.unicyb.tcct.exception.IdColumnNotFoundException;
 @Service
 public class IntersectionServiceImpl implements IntersectionService {
 	@Autowired
+	@Qualifier(value = "tableServiceImpl")
 	private TableService tableService;
 
 	@Override

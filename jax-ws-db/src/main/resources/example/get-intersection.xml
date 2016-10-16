@@ -1,0 +1,12 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:gs="ua.kiev.unicyb.tcct">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <gs:getTableIntersectionDtoRequest>
+            <gs:db1Name>DB1</gs:db1Name>
+            <gs:table1Name>TABLE1</gs:table1Name>
+            <gs:db2Name>DB1</gs:db2Name>
+            <gs:table2Name>TABLE2</gs:table2Name>
+        </gs:getTableIntersectionDtoRequest>
+    </soapenv:Body>
+</soapenv:Envelope>

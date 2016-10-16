@@ -27,4 +27,6 @@ public interface DatabaseService {
 	Iterable<Table> findAllTables(String databaseName);
 
 	Column getColumnByName(String dbName, String tableName, String columnName);
+
+	Iterable<Column> findAllColumns(String dbName, String tableName);
 }

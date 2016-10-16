@@ -17,7 +17,6 @@
         <FlowPane>
             <Button text="%get_table_view" onAction="#handleViewTableContentAction"/>
             <Button text="%intersect_tables" onAction="#handleTableIntersectionAction"/>
-            <Button text="Mock" onAction="#mock"/>
         </FlowPane>
     </center>
 </BorderPane>

@@ -14,4 +14,6 @@ public interface ColumnService {
 	void updateColumn(String dbName, String tableName, Column column);
 
 	Iterable<SupportedType> getAllSupportedTypes();
+
+	Iterable<Column> getAllColumns(String dbName, String tableName);
 }

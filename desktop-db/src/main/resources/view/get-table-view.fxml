@@ -25,6 +25,7 @@
     <Button text="%get_table_view" visible="false" fx:id="getTableView" GridPane.columnIndex="1" GridPane.rowIndex="7"
             onAction="#getTableView" disable="true"/>
 
-    <Button text="%create_record" visible="false" fx:id="createRecordView" GridPane.columnIndex="1" GridPane.rowIndex="7"
+    <Button text="%create_record" visible="false" fx:id="createRecordView" GridPane.columnIndex="1"
+            GridPane.rowIndex="7"
             onAction="#createRecord" disable="true"/>
 </GridPane>

@@ -1,6 +1,7 @@
 package ua.kiev.unicyb.tcct.service.table;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.Iterator;
@@ -18,6 +19,7 @@ import ua.kiev.unicyb.tcct.service.database.DatabaseService;
 @Service
 public class TableServiceImpl implements TableService {
 	@Autowired
+	@Qualifier(value = "databaseServiceImpl")
 	private DatabaseService databaseService;
 
 	@Override

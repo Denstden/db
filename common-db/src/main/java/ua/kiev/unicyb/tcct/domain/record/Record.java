@@ -6,6 +6,13 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
 import ua.kiev.unicyb.tcct.domain.column.Column;
 import ua.kiev.unicyb.tcct.domain.field.Field;
 
@@ -13,9 +20,14 @@ import ua.kiev.unicyb.tcct.domain.field.Field;
  * @Author Denys Storozhenko.
  */
 @Component
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "", propOrder = {"fields"})
+@XmlRootElement(name = "record")
 public class Record implements Serializable {
 	private static final Long serialVersionUID = -691274196371259512L;
 
+	@XmlElementWrapper(name = "fields", namespace = "ua.kiev.unicyb.tcct", required = true)
+	@XmlElement(name = "field", namespace = "ua.kiev.unicyb.tcct")
 	private Map<Column, Field> fields = new HashMap<>();
 
 	public Record() {

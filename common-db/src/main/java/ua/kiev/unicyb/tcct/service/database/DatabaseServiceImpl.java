@@ -3,6 +3,8 @@ package ua.kiev.unicyb.tcct.service.database;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 import ua.kiev.unicyb.tcct.dao.database.DatabaseDao;
 import ua.kiev.unicyb.tcct.domain.column.Column;
 import ua.kiev.unicyb.tcct.domain.database.Database;
@@ -13,7 +15,7 @@ import ua.kiev.unicyb.tcct.domain.table.Table;
  */
 @Service
 public class DatabaseServiceImpl implements DatabaseService {
-//	private static final Logger logger = LogManager.getLogger(DatabaseServiceImpl.class);
+	//	private static final Logger logger = LogManager.getLogger(DatabaseServiceImpl.class);
 
 	@Autowired
 	private DatabaseDao databaseDao;
@@ -47,6 +49,17 @@ public class DatabaseServiceImpl implements DatabaseService {
 	@Override
 	public Column getColumnByName(String dbName, String tableName, String columnName) {
 		return databaseDao.getColumnByName(dbName, tableName, columnName);
+	}
+
+	@Override
+	public Iterable<Column> findAllColumns(String dbName, String tableName) {
+		Iterable<Table> tables = databaseDao.findAllTables(dbName);
+		for (Table table : tables) {
+			if (table.getTableName().equals(tableName)) {
+				return table.getColumns();
+			}
+		}
+		return new ArrayList<>();
 	}
 
 	@Override

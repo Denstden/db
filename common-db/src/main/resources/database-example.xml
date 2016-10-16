@@ -1,0 +1,102 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <ns2:table xmlns:ns2="ua.kiev.unicyb.tcct">
+            <ns2:tableName>TABLE1_TABLE2_intersection</ns2:tableName>
+            <ns2:columns>
+                <ns2:column>
+                    <ns2:type>STRING</ns2:type>
+                    <ns2:columnName>ID</ns2:columnName>
+                    <ns2:isNullable>true</ns2:isNullable>
+                    <ns2:defaultValue xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">123
+                    </ns2:defaultValue>
+                </ns2:column>
+                <ns2:column>
+                    <ns2:type>STRING</ns2:type>
+                    <ns2:columnName>Name</ns2:columnName>
+                    <ns2:isNullable>true</ns2:isNullable>
+                    <ns2:defaultValue xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">Ivan
+                    </ns2:defaultValue>
+                </ns2:column>
+            </ns2:columns>
+            <ns2:records>
+                <ns2:record>
+                    <ns2:fields>
+                        <entry>
+                            <key>
+                                <ns2:type>STRING</ns2:type>
+                                <ns2:columnName>ID</ns2:columnName>
+                                <ns2:isNullable>true</ns2:isNullable>
+                                <ns2:defaultValue xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                                                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                                  xsi:type="xs:string">123
+                                </ns2:defaultValue>
+                            </key>
+                            <value>
+                                <ns2:value xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                                           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">1
+                                </ns2:value>
+                            </value>
+                        </entry>
+                        <entry>
+                            <key>
+                                <ns2:type>STRING</ns2:type>
+                                <ns2:columnName>Name</ns2:columnName>
+                                <ns2:isNullable>true</ns2:isNullable>
+                                <ns2:defaultValue xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                                                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                                  xsi:type="xs:string">Ivan
+                                </ns2:defaultValue>
+                            </key>
+                            <value>
+                                <ns2:value xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                                           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">
+                                    Petro
+                                </ns2:value>
+                            </value>
+                        </entry>
+                    </ns2:fields>
+                </ns2:record>
+                <ns2:record>
+                    <ns2:fields>
+                        <entry>
+                            <key>
+                                <ns2:type>STRING</ns2:type>
+                                <ns2:columnName>ID</ns2:columnName>
+                                <ns2:isNullable>true</ns2:isNullable>
+                                <ns2:defaultValue xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                                                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                                  xsi:type="xs:string">123
+                                </ns2:defaultValue>
+                            </key>
+                            <value>
+                                <ns2:value xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                                           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">2
+                                </ns2:value>
+                            </value>
+                        </entry>
+                        <entry>
+                            <key>
+                                <ns2:type>STRING</ns2:type>
+                                <ns2:columnName>Name</ns2:columnName>
+                                <ns2:isNullable>true</ns2:isNullable>
+                                <ns2:defaultValue xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                                                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                                  xsi:type="xs:string">Ivan
+                                </ns2:defaultValue>
+                            </key>
+                            <value>
+                                <ns2:value xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                                           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">
+                                    Vasiliy
+                                </ns2:value>
+                            </value>
+                        </entry>
+                    </ns2:fields>
+                </ns2:record>
+            </ns2:records>
+        </ns2:table>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

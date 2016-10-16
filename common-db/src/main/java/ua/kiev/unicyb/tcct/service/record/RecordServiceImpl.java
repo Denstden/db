@@ -1,6 +1,7 @@
 package ua.kiev.unicyb.tcct.service.record;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,9 +33,10 @@ import ua.kiev.unicyb.tcct.service.database.DatabaseService;
  */
 @Service
 public class RecordServiceImpl implements RecordService {
-//	private static final Logger logger = LogManager.getLogger(RecordServiceImpl.class);
+	//	private static final Logger logger = LogManager.getLogger(RecordServiceImpl.class);
 
 	@Autowired
+	@Qualifier(value = "databaseServiceImpl")
 	private DatabaseService databaseService;
 
 	@Override
@@ -167,7 +169,7 @@ public class RecordServiceImpl implements RecordService {
 				"', ID column value '" + column.getValue() + "'");*/
 		Database database = databaseService.findByName(databaseName);
 		database.getTables().stream().filter(table -> table.getTableName().equals(tableName)).forEach(table -> {
-//			logger.info("Update record for table '" + tableName + "'");
+			//			logger.info("Update record for table '" + tableName + "'");
 			Record record1 = findRecordByIdColumn(column, table.getRecords());
 			table.getRecords().remove(record1);
 			record1.setFields(record.getFields());
@@ -213,10 +215,14 @@ public class RecordServiceImpl implements RecordService {
 
 	private Object castTo(String recordId, SupportedType type) {
 		switch (type) {
-		case DOUBLE: return Double.valueOf(recordId);
-		case INTEGER: return Integer.valueOf(recordId);
-		case LONG: return Long.valueOf(recordId);
-		default: return recordId;
+		case DOUBLE:
+			return Double.valueOf(recordId);
+		case INTEGER:
+			return Integer.valueOf(recordId);
+		case LONG:
+			return Long.valueOf(recordId);
+		default:
+			return recordId;
 		}
 	}
 

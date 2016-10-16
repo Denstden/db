@@ -20,10 +20,7 @@ import ua.kiev.unicyb.tcct.domain.table.Table;
  */
 @Component
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-		"databaseName",
-		"tables"
-})
+@XmlType(name = "", propOrder = {"databaseName", "tables"})
 @XmlRootElement(name = "database")
 public class Database implements Serializable, Comparable<Database> {
 	private static final long serialVersionUID = 12631934182612L;
@@ -94,4 +91,40 @@ public class Database implements Serializable, Comparable<Database> {
 			}
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "Database{" +
+				"databaseName='" + databaseName + '\'' +
+				", tables=" + tables +
+				'}';
+	}
+	/*public String toString() {
+		return "Database:{\n" +
+				"databaseName='" + databaseName + '\'' +
+				"\ntables=[\n" + tablesToString(tables) +
+				"]\n}\n";
+	}
+
+	private String tablesToString(List<Table> tables) {
+		String res = "";
+		for (Table table : tables) {
+			res += "\tTable{"+"\n";
+			res += "\t\ttableName='" + table.getTableName()+"'\n";
+			res += "\t\tcolumns=[\n" + columnsToString(table.getColumns())+"\t\t]\n\t}\n";
+		}
+		return res;
+	}
+
+	private String columnsToString(Set<Column> columns) {
+		String res = "";
+		for (Column column : columns) {
+			res += "\t\t\tColumn{"+"\n";
+			res += "\t\t\t\ttype='"+column.getType()+"'\n";
+			res += "\t\t\t\tcolumnName='"+column.getColumnName()+"'\n";
+			res += "\t\t\t\tisNullable='"+column.isNullable()+"'\n";
+			res += "\t\t\t\tdefaultValue='"+column.getDefaultValue()+"'\n\t\t\t}\n";
+		}
+		return res;
+	}*/
 }

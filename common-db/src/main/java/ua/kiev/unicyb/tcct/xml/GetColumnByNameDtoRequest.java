@@ -10,17 +10,15 @@ import javax.xml.bind.annotation.XmlType;
  * @Author Denys Storozhenko.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-		"databaseName",
-		"tableName",
-		"columnName"
-})
+@XmlType(name = "", propOrder = {"databaseName", "tableName", "columnName"})
 @XmlRootElement(name = "getColumnByNameDtoRequest")
 public class GetColumnByNameDtoRequest {
 	@XmlElement(required = true)
 	private String databaseName;
+
 	@XmlElement(required = true)
 	private String tableName;
+
 	@XmlElement(required = true)
 	private String columnName;
 

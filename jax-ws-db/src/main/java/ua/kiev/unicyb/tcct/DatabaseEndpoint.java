@@ -11,9 +11,11 @@ import ua.kiev.unicyb.tcct.domain.database.Database;
 import ua.kiev.unicyb.tcct.domain.table.Table;
 import ua.kiev.unicyb.tcct.service.column.ColumnService;
 import ua.kiev.unicyb.tcct.service.database.DatabaseService;
+import ua.kiev.unicyb.tcct.service.table.IntersectionService;
 import ua.kiev.unicyb.tcct.service.table.TableService;
-import ua.kiev.unicyb.tcct.xml.GetColumnByNameDtoRequest;
 import ua.kiev.unicyb.tcct.xml.DatabaseDtoRequest;
+import ua.kiev.unicyb.tcct.xml.GetColumnByNameDtoRequest;
+import ua.kiev.unicyb.tcct.xml.GetTableIntersectionDtoRequest;
 import ua.kiev.unicyb.tcct.xml.TableDtoRequest;
 
 /**
@@ -25,6 +27,9 @@ public class DatabaseEndpoint {
 
 	@Autowired
 	private DatabaseService databaseService;
+
+	@Autowired
+	private IntersectionService intersectionService;
 
 	@Autowired
 	private TableService tableService;
@@ -47,6 +52,14 @@ public class DatabaseEndpoint {
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getColumnByNameDtoRequest")
 	@ResponsePayload
 	public Column getColumn(@RequestPayload GetColumnByNameDtoRequest request) {
-		return columnService.getColumnByName(request.getDatabaseName(), request.getTableName(), request.getColumnName());
+		return columnService
+				.getColumnByName(request.getDatabaseName(), request.getTableName(), request.getColumnName());
+	}
+
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getTableIntersectionDtoRequest")
+	@ResponsePayload
+	public Table getTableIntersection(@RequestPayload GetTableIntersectionDtoRequest request) {
+		return intersectionService.intersect(request.getDb1Name(), request.getDb2Name(), request.getTable1Name(),
+				request.getTable2Name());
 	}
 }

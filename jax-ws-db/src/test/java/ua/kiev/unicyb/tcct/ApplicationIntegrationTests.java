@@ -37,25 +37,24 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class ApplicationIntegrationTests {
 
-    private Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
+	private Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
 
-    @LocalServerPort
-    private int port = 0;
+	@LocalServerPort
+	private int port = 0;
 
-    @Before
-    public void init() throws Exception {
-        marshaller.setPackagesToScan(ClassUtils.getPackageName(DatabaseDtoRequest.class),
-                ClassUtils.getPackageName(Database.class), ClassUtils.getPackageName(Table.class));
-        marshaller.afterPropertiesSet();
-    }
+	@Before
+	public void init() throws Exception {
+		marshaller.setPackagesToScan(ClassUtils.getPackageName(DatabaseDtoRequest.class),
+				ClassUtils.getPackageName(Database.class), ClassUtils.getPackageName(Table.class));
+		marshaller.afterPropertiesSet();
+	}
 
-    @Test
-    public void testSendAndReceive() {
-        WebServiceTemplate ws = new WebServiceTemplate(marshaller);
-        DatabaseDtoRequest request = new DatabaseDtoRequest();
-        request.setDatabaseName("DB1");
+	@Test
+	public void testSendAndReceive() {
+		WebServiceTemplate ws = new WebServiceTemplate(marshaller);
+		DatabaseDtoRequest request = new DatabaseDtoRequest();
+		request.setDatabaseName("DB1");
 
-        assertThat(ws.marshalSendAndReceive("http://localhost:"
-                + port + "/ws", request)).isNotNull();
-    }
+		assertThat(ws.marshalSendAndReceive("http://localhost:" + port + "/ws", request)).isNotNull();
+	}
 }

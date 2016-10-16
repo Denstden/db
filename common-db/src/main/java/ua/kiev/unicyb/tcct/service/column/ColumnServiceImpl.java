@@ -1,6 +1,7 @@
 package ua.kiev.unicyb.tcct.service.column;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -23,6 +24,7 @@ import ua.kiev.unicyb.tcct.service.database.DatabaseService;
 @Service
 public class ColumnServiceImpl implements ColumnService {
 	@Autowired
+	@Qualifier(value = "databaseServiceImpl")
 	private DatabaseService databaseService;
 
 	@Override
@@ -71,6 +73,11 @@ public class ColumnServiceImpl implements ColumnService {
 	@Override
 	public Iterable<SupportedType> getAllSupportedTypes() {
 		return Arrays.asList(SupportedType.values());
+	}
+
+	@Override
+	public Iterable<Column> getAllColumns(String dbName, String tableName) {
+		return databaseService.findAllColumns(dbName, tableName);
 	}
 
 	private void addColumnToEmptyTable(String tableName, Column column, Set<Column> tableColumns) {
