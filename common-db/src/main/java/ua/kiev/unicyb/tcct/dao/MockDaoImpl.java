@@ -2,8 +2,8 @@ package ua.kiev.unicyb.tcct.dao;
 
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -22,7 +22,7 @@ import ua.kiev.unicyb.tcct.domain.table.Table;
  * @Author Denys Storozhenko.
  */
 @Component
-public class MockDaoImpl implements MockDao {
+public class MockDaoImpl implements MockDao, Serializable {
 	@Override
 	public List<Database> mockDb() {
 		List<Database> res = new ArrayList<>();
@@ -30,7 +30,10 @@ public class MockDaoImpl implements MockDao {
 		Table table1 = createTable("TABLE1", createColumnsTable1(), createRecordsTable1());
 		Table table2 = createTable("TABLE2", createColumnsTable2(), createRecordsTable2());
 
-		Database database = createDatabase("DB1", Arrays.asList(table1, table2));
+		Database database = createDatabase("DB1", new ArrayList<Table>(){{
+			add(table1);
+			add(table2);
+		}});
 		res.add(database);
 		return res;
 	}

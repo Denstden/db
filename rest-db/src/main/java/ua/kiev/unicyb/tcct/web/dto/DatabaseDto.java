@@ -1,13 +1,16 @@
 package ua.kiev.unicyb.tcct.web.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 /**
  * @Author Denys Storozhenko.
  */
 public class DatabaseDto {
+	@JsonProperty("databaseName")
 	private String databaseName;
-
+	@JsonProperty("tables")
 	private List<TableDto> tables;
 
 	public String getDatabaseName() {
